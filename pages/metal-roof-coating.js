@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
-import { PageHero, CallButtons, TrustBar, Split, Checks, Photo, Steps, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
+import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, Steps, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
 import { site, jobs, reels, faq, fitTable } from "@/data/site"
 
 const steps = [
@@ -39,6 +39,8 @@ export default function Metal() {
                     Most of our metal roof work uses an industrial-grade aluminum roof coating. It bonds well to steel, slows rust and leaves a bright silver finish. We'll explain which system fits your roof, and why, at the inspection.
                 </p>
             </Split>
+
+            <Gallery title="Metal roofs we've coated" items={[jobs.quonset, jobs.lowBarn, { img: jobs.rustedPanels, title: "Rusted panels", tag: "Before prep" }]} />
 
             <Steps eyebrow="Process" title="How we coat a metal roof" steps={steps} soft={false} />
 

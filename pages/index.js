@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
-import { TrustBar, SectionHead, Steps, Values, BeforeAfter, PhotoCard, Reels, Faq, FinalCta, Img, Photo, faqSchema } from "@/components/Blocks"
+import { TrustBar, SectionHead, Steps, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, faqSchema } from "@/components/Blocks"
 import { site, services, jobSteps, whyUs, jobs, reels, faq, states, smsHref, telHref } from "@/data/site"
 
 const homeFaq = [faq.rusty, faq.cost, faq.life, faq.shutdown]
@@ -80,16 +80,7 @@ export default function Home() {
             <Steps eyebrow="The process" title="How a ProGrade coating job works" steps={jobSteps} soft={false} />
 
             {/* Proof: his own jobs */}
-            <section className="sr-section sr-section--soft">
-                <div className="sr-container">
-                    <SectionHead eyebrow="Our work" title="Recent work" lead="Drag the slider on each photo to compare the roof before and after coating." />
-                    <div className="sr-grid sr-cols-3">
-                        <BeforeAfter job={jobs.barn} />
-                        <BeforeAfter job={jobs.steel} />
-                        <PhotoCard img={jobs.firehallCoating} title="Hookstown Fire Department" tag="Coating in progress" />
-                    </div>
-                </div>
-            </section>
+            <Gallery soft title="Recent work" lead="Drag the slider on each photo to compare the roof before and after coating." items={[jobs.barn, jobs.longBarn, jobs.quonset, jobs.steel, jobs.smallBarn, jobs.lowBarn]} />
 
             <Reels items={[reels.rust, reels.seams, reels.coating, reels.spray]} />
 

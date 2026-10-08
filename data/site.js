@@ -75,6 +75,58 @@ export const jobs = {
     steelAngle: { ...jp("steel-building-after-angle"), alt: "Coated steel building roof seen from the corner of the lot" },
     firehall: { ...jp("firehall-before"), alt: "Hookstown Fire Department metal roof before coating, stained and weathered" },
     firehallCoating: { ...jp("firehall-coating"), alt: "ProGrade crew spraying aluminum coating on the Hookstown Fire Department roof" },
+    // Second batch from his Facebook (8 Oct 2026). Same rule: captions say only
+    // what the photo shows; no towns, sizes or dates are known for these.
+    longBarn: {
+        title: "Long barn, full roof",
+        tag: "Farm building",
+        before: { ...jp("long-barn-before"), alt: "Long open-sided barn with a rusted metal roof before coating" },
+        after: { ...jp("long-barn-after"), alt: "The same long barn with its whole roof coated silver" },
+    },
+    quonset: {
+        title: "Quonset building",
+        tag: "Farm / storage",
+        before: { ...jp("quonset-before"), alt: "Arched Quonset building with rust streaks across the metal" },
+        after: { ...jp("quonset-after"), alt: "The same Quonset building coated bright silver" },
+    },
+    smallBarn: {
+        title: "Small barn and run-in",
+        tag: "Farm building",
+        before: { ...jp("small-barn-before"), alt: "Small wooden barn with a rusted metal roof before coating" },
+        after: { ...jp("small-barn-after"), alt: "The same small barn with its roof coated silver" },
+    },
+    grayBarn: {
+        title: "Bank barn",
+        tag: "Farm building",
+        before: { ...jp("gray-barn-before"), alt: "Weathered gray bank barn with a rusted red metal roof" },
+        after: { ...jp("gray-barn-after"), alt: "The same bank barn with its roof coated silver" },
+    },
+    lowBarn: {
+        title: "Low-pitch field barn",
+        tag: "Farm building",
+        before: { ...jp("low-barn-before"), alt: "Low-pitch barn in an open field with rust stripes along every panel" },
+        after: { ...jp("low-barn-after"), alt: "The same field barn with its roof coated bright silver" },
+    },
+    // His own before/after graphics (logo and labels already on them).
+    houseBA: { ...jp("house-ba"), alt: "Before and after: a ranch house's faded metal roof, then coated" },
+    houseBlueBA: { ...jp("house-blue-ba"), alt: "Before and after: a blue house's metal roof, then coated" },
+    gambrelBA: { ...jp("gambrel-barn-ba"), alt: "Before and after: a rusted gambrel barn roof, then coated" },
+    poleShedBA: { ...jp("pole-shed-ba"), alt: "Before and after: a rusted pole shed roof, then coated" },
+    redBarnCoated: { ...jp("red-barn-coated"), alt: "Red bank barn with its metal roof freshly coated" },
+    rustedPanels: { ...jp("rusted-panels"), alt: "Close-up of rusted metal roof panels before prep" },
+}
+
+// ⚠ STOCK, not William's work. He has no flat or rubber roof photos yet
+// (none on his Facebook as of 8 Oct 2026). Marc approved stock for the flat
+// roof page until he sends his own. Wikimedia Commons; CC BY-SA images MUST
+// keep their visible credit. Never caption these as ProGrade jobs.
+const sp = (n) => ({ src: `/media/stock/${n}-1600.jpg`, srcSet: `/media/stock/${n}-800.jpg 800w, /media/stock/${n}-1600.jpg 1600w` })
+const wm = (file) => `https://commons.wikimedia.org/wiki/File:${file}`
+export const stock = {
+    epdmFinished: { ...sp("epdm-finished"), alt: "A finished rubber (EPDM) flat roof with a clean parapet edge", credit: null },
+    epdmFlat: { ...sp("epdm-flat-roof"), alt: "A rubber (EPDM) flat roof on a city building", credit: { by: "Crownbuild", lic: "CC BY-SA 3.0", licUrl: "https://creativecommons.org/licenses/by-sa/3.0", src: wm("EPDM_rubber_roof_-_Halifax.jpg") } },
+    epdmExtension: { ...sp("epdm-extension"), alt: "A rubber flat roof on a home extension", credit: { by: "Crownbuild", lic: "CC BY-SA 3.0", licUrl: "https://creativecommons.org/licenses/by-sa/3.0", src: wm("EPDM_Rubber_flat_roof_Halifax.jpg") } },
+    membraneFailure: { ...sp("membrane-failure"), alt: "A worn flat roof membrane cracked across its whole surface", credit: { by: "GRALISTAIR (cropped)", lic: "CC BY-SA 4.0", licUrl: "https://creativecommons.org/licenses/by-sa/4.0", src: wm("Roofing_Membrane_Failure_1.jpg") } },
 }
 
 // William's reels. Muted, inline, poster frame shown until played.
@@ -107,11 +159,12 @@ export const services = [
     },
     {
         // William, 8 Oct 2026: he also coats rubber and flat roofs.
-        // ⚠ No flat-roof photo yet, so the card shows an icon panel.
+        // ⚠ No flat-roof photo of his yet: card uses the public-domain stock image.
         href: "/flat-roof-coating",
         icon: "flat",
         title: "Flat and rubber roofs",
         text: "Rubber (EPDM) and other flat and low-slope roofs sealed and coated without a tear-off.",
+        img: null, // set below to public-domain stock until he sends a photo
     },
     {
         href: "/commercial-roof-coating",
@@ -254,9 +307,13 @@ export const privacyNotice =
  * 8. PHOTO OF WILLIAM for About. None yet; About uses a job photo.
  * 9. META PIXEL + GA4 IDs. /thank-you fires Lead / generate_lead only if
  *    fbq / gtag exist, so nothing breaks before they are added.
- * 11. FLAT + RUBBER ROOFS (added 8 Oct 2026 at William's request). Need
+ * 11. FLAT + RUBBER ROOFS (added 8 Oct 2026 at William's request). Page
+ *    uses STOCK photos (`stock` above) until he sends his own. Need
  *    photos of his flat/rubber jobs, which coating he uses on them, and
  *    whether he also does TPO, modified bitumen or built-up roofs. The copy
  *    only names rubber (EPDM) and flat/low-slope roofs.
  * 10. REVIEWS. None. No review section, stars or counts anywhere.
  */
+
+// Home card for flat roofs uses the public-domain stock photo (no credit needed).
+services.find((x) => x.href === "/flat-roof-coating").img = stock.epdmFinished

@@ -166,9 +166,9 @@ export function BeforeAfter({ job, place }) {
     )
 }
 
-export function PhotoCard({ img, title, tag }) {
+export function PhotoCard({ img, title, tag, graphic }) {
     return (
-        <div className="sr-gallery-item">
+        <div className={`sr-gallery-item${graphic ? " pg-graphic" : ""}`}>
             <div className="sr-ba" style={{ cursor: "default" }}>
                 <button className="sr-lb-btn" data-lb={img.src} data-lb-cap={title} data-lb-group="work" aria-label="View photo larger"><Icon name="expand" /></button>
                 <Img img={img} sizes="(max-width: 900px) 100vw, 640px" />
@@ -281,6 +281,41 @@ export function FinalCta({ title = "Get your roof looked at for free", id = "qf-
                     <p className="sr-muted" style={{ marginTop: 24, fontSize: ".9rem" }}>{site.hic} · Fully insured · Serving {site.regionShort}</p>
                 </div>
                 <div className="reveal"><InspectionForm id={id} /></div>
+            </div>
+        </section>
+    )
+}
+
+// Stock photo with its licence credit. Used only where William has no photo of
+// his own yet, and never captioned as a ProGrade job (see `stock` in site.js).
+export function StockPhoto({ img, caption, ratio = "4/3" }) {
+    const c = img.credit
+    return (
+        <figure className="pg-stock" style={{ margin: 0 }}>
+            <div style={{ borderRadius: "var(--radius-xl)", overflow: "hidden", boxShadow: "var(--shadow-lg)", aspectRatio: ratio }}>
+                <Img img={img} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <figcaption className="pg-stock__cap">
+                {caption}
+                {c && (
+                    <> Photo: <a href={c.src} target="_blank" rel="noopener">{c.by}</a>, <a href={c.licUrl} target="_blank" rel="noopener">{c.lic}</a>.</>
+                )}
+            </figcaption>
+        </figure>
+    )
+}
+
+// Grid of his jobs: before/after sliders and single photos.
+export function Gallery({ eyebrow = "Our work", title, lead, items, soft, cols = 3 }) {
+    return (
+        <section className={`sr-section${soft ? " sr-section--soft" : ""}`}>
+            <div className="sr-container" style={cols === 2 ? { maxWidth: 900 } : undefined}>
+                <SectionHead eyebrow={eyebrow} title={title} lead={lead} />
+                <div className={`sr-grid sr-cols-${cols}`}>
+                    {items.map((it, i) =>
+                        it.before ? <BeforeAfter key={i} job={it} /> : <PhotoCard key={i} img={it.img} title={it.title} tag={it.tag} graphic={it.graphic} />
+                    )}
+                </div>
             </div>
         </section>
     )

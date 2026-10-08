@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
-import { PageHero, CallButtons, TrustBar, Split, Checks, Photo, Steps, Values, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
+import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, Steps, Values, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
 import { site, whyUs, jobs, reels, faq, trust, smsHref } from "@/data/site"
 
 const steps = [
@@ -61,6 +61,8 @@ export default function Agricultural() {
                 </p>
                 <a className="sr-btn sr-btn--dark" href="/roof-coating-vs-replacement" style={{ marginTop: 24 }}>Coating vs Replacement <Icon name="arrow" /></a>
             </Split>
+
+            <Gallery soft title="Farm roofs we've coated" lead="Bank barns, pole sheds, run-ins and Quonsets. Drag the sliders to compare." items={[jobs.grayBarn, jobs.smallBarn, jobs.longBarn, { img: jobs.gambrelBA, title: "Gambrel barn", tag: "Before and after", graphic: true }, { img: jobs.poleShedBA, title: "Pole shed", tag: "Before and after", graphic: true }, { img: jobs.redBarnCoated, title: "Red bank barn", tag: "Coated roof", graphic: true }]} />
 
             <Steps eyebrow="Prep is the job" title="How we make sure the coating holds" lead="A coating is only as good as the prep under it. Most of the job happens before any coating goes on." steps={steps} />
 

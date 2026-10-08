@@ -1,5 +1,5 @@
 import Layout from "@/components/Layout"
-import { PageHero, CallButtons, TrustBar, Split, Checks, Photo, Steps, BeforeAfter, FinalCta, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
+import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, Steps, BeforeAfter, FinalCta, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
 import { site, jobs } from "@/data/site"
 
 const steps = [
@@ -40,6 +40,8 @@ export default function Residential() {
                     We're registered with the Pennsylvania Attorney General as a home improvement contractor ({site.hic}) and carry insurance. Every job gets a written contract with the price, the scope of work and the guarantee before we start.
                 </p>
             </Split>
+
+            <Gallery cols={2} title="Homes we've coated" lead="Metal roofs on houses, before and after coating." items={[{ img: jobs.houseBA, title: "Ranch house", tag: "Before and after", graphic: true }, { img: jobs.houseBlueBA, title: "Blue house", tag: "Before and after", graphic: true }]} />
 
             <Steps eyebrow="What to expect" title="What to expect" steps={steps} />
 
