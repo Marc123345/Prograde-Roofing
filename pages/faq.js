@@ -7,7 +7,7 @@ import { site, faq, telHref, smsHref } from "@/data/site"
 // links to its matching service page").
 const groups = [
     { title: "Cost", link: { href: "/roof-coating-vs-replacement", label: "Coating vs replacement" }, items: [faq.cost, faq.cheaper, { q: "Do you offer financing?", a: "Not at this time." }] },
-    { title: "Will it work", link: { href: "/metal-roof-coating", label: "Metal roof coating" }, items: [faq.life, faq.leaks, faq.rusty, faq.warranty] },
+    { title: "Will it work", link: { href: "/metal-roof-coating", label: "Metal roof coating" }, items: [faq.life, faq.leaks, faq.rusty, faq.flat, faq.warranty] },
     { title: "The job itself", link: { href: "/agricultural-roof-coating", label: "Barn roof coating" }, items: [faq.duration, faq.home, faq.season, faq.areas, faq.licensed] },
 ]
 const all = groups.flatMap((g) => g.items)

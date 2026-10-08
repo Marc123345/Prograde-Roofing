@@ -6,7 +6,7 @@ import { site, nav, states, smsHref, telHref } from "@/data/site"
 // Plain <a> links on purpose: the SummitRoof motion scripts initialise once
 // per page load, exactly as the template was built to run.
 
-const services = nav.slice(0, 5)
+const services = nav.slice(0, 6)
 
 export const contractorSchema = {
     "@context": "https://schema.org",

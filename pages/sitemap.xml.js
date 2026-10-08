@@ -2,7 +2,7 @@ import { site, states } from "@/data/site"
 
 // /barn-roof-coating, /thank-you and noindex state pages are left out (plan 5).
 const paths = [
-    "/", "/agricultural-roof-coating", "/metal-roof-coating", "/commercial-roof-coating", "/residential-roof-coating",
+    "/", "/agricultural-roof-coating", "/metal-roof-coating", "/flat-roof-coating", "/commercial-roof-coating", "/residential-roof-coating",
     "/roof-coating-vs-replacement", "/service-areas",
     ...states.filter((s) => !s.noindex).map((s) => `/service-areas/${s.slug}`),
     "/about", "/faq", "/free-inspection", "/privacy-policy",

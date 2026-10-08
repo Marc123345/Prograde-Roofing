@@ -36,7 +36,7 @@ export default function StatePage({ slug }) {
             {pa && <TrustBar />}
 
             <Split eyebrow="What we coat" title="Roofs we coat here" media={<BeforeAfter job={pa ? jobs.steel : jobs.barn} />}>
-                <Checks items={["Barns, pole buildings and farm sheds", "Metal roofs on shops and commercial buildings", "Homes, garages and outbuildings"]} />
+                <Checks items={["Barns, pole buildings and farm sheds", "Metal roofs on shops and commercial buildings", "Rubber and flat roofs", "Homes, garages and outbuildings"]} />
                 <p style={{ marginTop: 16 }}>
                     Not sure if we cover your county? Call or text <a href={`tel:${site.tel}`} style={{ fontWeight: 600 }}>{site.phone}</a> with your town.
                 </p>

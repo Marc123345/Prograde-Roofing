@@ -42,11 +42,11 @@ export default function Home() {
             {/* What we coat: template photo service cards */}
             <section className="sr-section">
                 <div className="sr-container">
-                    <SectionHead eyebrow="What we coat" title="Roofs we work on" lead="Most of our work is on farm buildings, and we coat metal roofs on commercial buildings and homes too." />
-                    <div className="sr-grid sr-cols-4">
-                        {services.map((s) => (
+                    <SectionHead eyebrow="What we coat" title="Roofs we work on" lead="Most of our work is on farm buildings, and we coat metal, rubber and flat roofs on commercial buildings and homes too." />
+                    <div className="sr-grid sr-cols-3">
+                        {[...services, { href: "/roof-coating-vs-replacement", icon: "dollar", title: "Coating vs replacement", text: "Not sure which your roof needs? A straight comparison of cost, time and lifespan." }].map((s) => (
                             <a className="sr-card sr-service sr-service--photo" href={s.href} key={s.href}>
-                                <div className="sr-service__media"><Img img={{ ...s.img, alt: "" }} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 25vw" /></div>
+                                <div className="sr-service__media">{s.img ? <Img img={{ ...s.img, alt: "" }} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" /> : <div className="pg-card-panel"><Icon name={s.icon} /></div>}</div>
                                 <div className="sr-service__body">
                                     <div className="sr-service__icon"><Icon name={s.icon} /></div>
                                     <h3 style={{ fontSize: "1.2rem" }}>{s.title}</h3>

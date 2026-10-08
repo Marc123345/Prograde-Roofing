@@ -12,7 +12,7 @@ export function Img({ img, sizes = "(max-width: 900px) 100vw, 50vw", priority, .
             sizes={sizes}
             alt={img.alt}
             loading={priority ? undefined : "lazy"}
-            fetchPriority={priority ? "high" : undefined}
+            fetchpriority={priority ? "high" : undefined}
             decoding="async"
             {...rest}
         />

@@ -23,7 +23,7 @@ export default function Commercial() {
             <Split eyebrow="Buildings" title="Buildings we coat" media={<Photo img={jobs.firehall} />}>
                 <Checks items={["Auto shops and garages", "Small warehouses and storage buildings", "Retail and strip buildings", "Churches, fire halls and community halls", "Equipment dealers and farm supply businesses"]} />
                 <p className="sr-muted" style={{ marginTop: 16, fontSize: ".95rem" }}>
-                    Metal roofs are most of our commercial work, like the Hookstown Fire Department hall pictured.
+                    We coat metal roofs, like the Hookstown Fire Department hall pictured, and rubber and flat roofs too. See <a href="/flat-roof-coating" style={{ fontWeight: 600 }}>flat and rubber roof coating</a>.
                 </p>
             </Split>
 

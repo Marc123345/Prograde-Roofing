@@ -20,7 +20,7 @@ export default function Residential() {
                 crumbs={[{ label: "Residential Roof Coating" }]}
                 eyebrow="Homes and garages"
                 title="Roof Coating for Homes, Garages and Outbuildings"
-                lead="Metal roofs on homes, detached garages, porches, sheds and other outbuildings. Stop leaks and rust without paying for a new roof."
+                lead="Metal, rubber and flat roofs on homes, detached garages, porches, sheds and other outbuildings. Stop leaks and rust without paying for a new roof."
                 img={jobs.steelAngle}
             >
                 <CallButtons text={false} />
@@ -28,7 +28,7 @@ export default function Residential() {
             <TrustBar items={[site.hic, "Fully insured", `${site.years} years in business`, "Free inspections", "Written contract and guarantee"]} />
 
             <Split eyebrow="Good fit" title="Residential roofs we coat" media={<BeforeAfter job={jobs.barn} />}>
-                <Checks items={["Metal roofs on houses", "Detached garages and workshops", "Sheds and outbuildings"]} />
+                <Checks items={["Metal roofs on houses", "Rubber and flat roofs on garages, porches and additions", "Detached garages and workshops", "Sheds and outbuildings"]} />
             </Split>
 
             <Split soft flip eyebrow="Appearance" title="How it will look" media={<Photo img={jobs.steel.after} />}>

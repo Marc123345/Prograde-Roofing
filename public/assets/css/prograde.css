@@ -234,3 +234,8 @@ body { background: var(--bg); }
 .dark {
   --radius-xs: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-xl: 0; --radius-pill: 0;
 }
+
+/* Service card with no job photo yet: brand panel instead of an image. */
+.pg-card-panel { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: var(--gold-400);
+  background: var(--slate-950) repeating-linear-gradient(90deg, rgba(255,255,255,.06) 0 2px, transparent 2px 26px); }
+.pg-card-panel .pg-icon { width: 64px; height: 64px; stroke-width: 1.5; }

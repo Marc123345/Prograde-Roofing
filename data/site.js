@@ -38,6 +38,7 @@ export const telHref = `tel:${site.tel}`
 export const nav = [
     { href: "/agricultural-roof-coating", label: "Barn & Farm Roofs" },
     { href: "/metal-roof-coating", label: "Metal Roofs" },
+    { href: "/flat-roof-coating", label: "Flat & Rubber Roofs" },
     { href: "/commercial-roof-coating", label: "Commercial" },
     { href: "/residential-roof-coating", label: "Residential" },
     { href: "/roof-coating-vs-replacement", label: "Coating vs Replacement" },
@@ -105,6 +106,14 @@ export const services = [
         img: jobs.steel.after,
     },
     {
+        // William, 8 Oct 2026: he also coats rubber and flat roofs.
+        // ⚠ No flat-roof photo yet, so the card shows an icon panel.
+        href: "/flat-roof-coating",
+        icon: "flat",
+        title: "Flat and rubber roofs",
+        text: "Rubber (EPDM) and other flat and low-slope roofs sealed and coated without a tear-off.",
+    },
+    {
         href: "/commercial-roof-coating",
         icon: "store",
         title: "Small commercial",
@@ -115,7 +124,7 @@ export const services = [
         href: "/residential-roof-coating",
         icon: "home",
         title: "Homes and garages",
-        text: "Metal roofs on homes, detached garages, porches and outbuildings.",
+        text: "Metal, rubber and flat roofs on homes, detached garages, porches and outbuildings.",
         img: jobs.steelAngle,
     },
 ]
@@ -157,6 +166,8 @@ export const faq = {
     warranty: { q: "What warranty do I get?", a: "A written workmanship guarantee from us, plus the coating manufacturer's warranty. We'll go through both in writing with your estimate." },
     duration: { q: "How long does a job take?", a: "It depends on the size of the roof and the weather. You'll get a realistic schedule with your written estimate." },
     home: { q: "Do I need to be home?", a: "Not for the whole job. We'll meet you for the inspection and the final walkthrough." },
+    flat: { q: "Do you coat rubber and flat roofs?", a: "Yes. As well as metal, we coat rubber (EPDM) and other flat and low-slope roofs on commercial buildings, garages and homes. We check the seams, flashing and drainage at the inspection and tell you whether coating is the right fix." },
+    ponding: { q: "My flat roof holds water. Can it still be coated?", a: "Often, yes. Standing water is one of the things we look at during the inspection, along with the seams and flashing, and we'll tell you straight whether that roof is a good candidate for coating." },
     areas: { q: "What areas do you serve?", a: `${site.region}.` },
     licensed: { q: "Are you licensed and insured?", a: `Yes. We're a registered Pennsylvania home improvement contractor (${site.hic}) and fully insured.` },
     free: { q: "Is the inspection really free?", a: "Yes. No cost and no obligation." },
@@ -243,5 +254,9 @@ export const privacyNotice =
  * 8. PHOTO OF WILLIAM for About. None yet; About uses a job photo.
  * 9. META PIXEL + GA4 IDs. /thank-you fires Lead / generate_lead only if
  *    fbq / gtag exist, so nothing breaks before they are added.
+ * 11. FLAT + RUBBER ROOFS (added 8 Oct 2026 at William's request). Need
+ *    photos of his flat/rubber jobs, which coating he uses on them, and
+ *    whether he also does TPO, modified bitumen or built-up roofs. The copy
+ *    only names rubber (EPDM) and flat/low-slope roofs.
  * 10. REVIEWS. None. No review section, stars or counts anywhere.
  */
