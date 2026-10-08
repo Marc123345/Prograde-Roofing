@@ -37,7 +37,7 @@ export default function Agricultural() {
             >
                 <div className="pg-hero-ctas">
                     <a className="sr-btn sr-btn--accent sr-btn--lg" href="/free-inspection">Book a Free Barn Roof Inspection</a>
-                    <a className="sr-btn sr-btn--outline sr-btn--lg" href={smsHref}><Icon name="sms" />Text a photo to {site.phone}</a>
+                    <a className="sr-btn sr-btn--outline sr-btn--lg" href={smsHref}><Icon name="sms" />Text Us a Photo</a>
                 </div>
             </PageHero>
             <TrustBar items={[`${site.years} years coating farm roofs`, ...trust.slice(1)]} />

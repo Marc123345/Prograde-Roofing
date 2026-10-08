@@ -245,3 +245,59 @@ body { background: var(--bg); }
 .pg-stock__cap a { color: inherit; text-decoration: underline; }
 /* His branded before/after graphics are portrait: show them whole. */
 .pg-graphic .sr-ba { aspect-ratio: 4 / 5; }
+
+/* ============================================================
+   Mobile fixes (Oct 2026 audit at 360-390px)
+   ============================================================ */
+
+/* Before/after labels were 11px. */
+.sr-ba__tag { font-size: 0.78rem; }
+
+/* 16px+ in every field so iOS Safari doesn't zoom the page on focus. */
+.sr-field input, .sr-field select, .sr-field textarea, .sr-field input[type="file"] { font-size: 16px; }
+
+/* Lightbox open button: 44px tap target. */
+.sr-lb-btn { min-width: 44px; min-height: 44px; }
+
+@media (max-width: 1024px) {
+  /* Header phone: real tap target. */
+  .sr-nav-phone { min-height: 44px; padding: 0 4px; }
+
+  /* Drawer: every item left-aligned, full-width rows with dividers. */
+  .sr-nav-links.is-open { align-items: stretch; gap: 0; padding: 8px 20px 16px; }
+  .sr-nav-links.is-open > a,
+  .sr-nav-links.is-open .sr-drop-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 52px; font-size: 1.05rem; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); }
+  .sr-nav-links.is-open .sr-drop { width: 100%; }
+  .sr-nav-links.is-open .sr-drop-menu { padding: 4px 0 8px 12px; border-bottom: 1px solid var(--border); }
+  .sr-nav-links.is-open .sr-drop-menu a { min-height: 44px; display: flex; align-items: center; font-size: 1rem; padding: 0 8px; }
+  .sr-nav-links.is-open .sr-drop:has(.sr-drop-menu) > .sr-drop-toggle { border-bottom: 0; }
+}
+
+@media (max-width: 768px) {
+  /* The sticky Call/Text/Inspection bar replaces back-to-top on phones; the
+     floating button sat over form buttons and body text. */
+  .sr-top { display: none; }
+
+  /* Footer links: 44px rows. */
+  .sr-footer li { margin-bottom: 0; }
+  .sr-footer li a, .sr-footer__social { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (max-width: 600px) {
+  /* Hero and CTA buttons: full width, stacked, allowed to wrap. */
+  .pg-hero-ctas, .sr-hero__ctas { flex-direction: column; align-items: stretch; }
+  .pg-hero-ctas .sr-btn, .sr-hero__ctas .sr-btn { width: 100%; white-space: normal; text-align: center; }
+  .sr-btn { white-space: normal; }
+  .sr-cta-band .sr-btn { width: 100%; }
+
+  /* Trust bar: tidy two-column list instead of a ragged centred wrap. */
+  .sr-cert .sr-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 14px; justify-content: stretch; padding-block: 16px; }
+  .sr-cert span { font-size: 0.82rem; align-items: flex-start; line-height: 1.35; }
+  .sr-cert .pg-icon { margin-top: 1px; }
+
+  /* Inline "More on..." and sitemap links: taller tap area. */
+  .pg-area-card .pg-more, .sr-section a[style*="inline-flex"] { min-height: 44px; }
+  .pg-list li a { min-height: 44px; }
+}
+.pg-radio-row label { min-height: 44px; padding: 8px 16px; }
+@media (max-width: 1024px) { .sr-nav-links.is-open .sr-drop-menu { width: 100%; } }
