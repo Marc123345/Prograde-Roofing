@@ -29,7 +29,7 @@ export const contractorSchema = {
 }
 
 function Seo({ title, description, noindex, schema, path }) {
-    const url = `${site.url}${path === "/" ? "" : path}`
+    const url = `${site.url}${path}`
     const blocks = [contractorSchema, ...(schema ? [].concat(schema) : [])]
     return (
         <Head>
@@ -37,6 +37,7 @@ function Seo({ title, description, noindex, schema, path }) {
             <meta name="description" content={description} />
             <link rel="canonical" href={url} />
             {noindex && <meta name="robots" content="noindex, nofollow" />}
+            {site.gscVerification && <meta name="google-site-verification" content={site.gscVerification} />}
             <meta property="og:type" content="website" />
             <meta property="og:site_name" content={site.name} />
             <meta property="og:title" content={title} />
@@ -136,7 +137,7 @@ function Footer() {
                 </div>
                 <div className="sr-footer__bottom">
                     <span>© {new Date().getFullYear()} {site.name} · {site.hic}</span>
-                    <span><a href="/privacy-policy">Privacy Policy</a></span>
+                    <span><a href="/privacy-policy">Privacy Policy</a> · <a href="/sitemap">Sitemap</a></span>
                 </div>
             </div>
         </footer>

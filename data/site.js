@@ -25,7 +25,12 @@ export const site = {
     region: "Western Pennsylvania, eastern Ohio, northern West Virginia and Virginia",
     regionShort: "Western PA, eastern Ohio, northern WV and Virginia",
     facebook: "https://www.facebook.com/ProGradeRoofCoatings",
-    url: "https://www.prograderoofcoatings.com", // ⚠ placeholder until the domain is known
+    // Canonical address used by canonical tags, schema, the sitemap and
+    // robots.txt. Live Vercel address until William's own domain is connected;
+    // then set NEXT_PUBLIC_SITE_URL in Vercel (no trailing slash) and redeploy.
+    url: (process.env.NEXT_PUBLIC_SITE_URL || "https://prograde-roofing.vercel.app").replace(/\/$/, ""),
+    // Google Search Console "HTML tag" verification code (content="..." only).
+    gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
     // Lead form endpoint (Formspree, Jotform, etc). Until it is set, the form
     // does NOT pretend to send: it tells the visitor to call or text instead.
     leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "",
@@ -291,7 +296,7 @@ export const privacyNotice =
  *
  * 1. NAME + DOMAIN. Site uses "ProGrade Roof Coatings" (logo/Facebook). The
  *    plan and his email say Prograde Roof Coating / PG Exteriors. `site.url`
- *    is a placeholder.
+ *    is the Vercel address until his domain is connected (NEXT_PUBLIC_SITE_URL).
  * 2. LEAD FORM. No endpoint yet. Set NEXT_PUBLIC_LEAD_ENDPOINT (Formspree or
  *    similar, needs file upload for the roof photo). Until then the form
  *    shows a call/text panel instead of claiming it sent.
