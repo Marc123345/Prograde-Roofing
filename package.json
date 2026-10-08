@@ -1,0 +1,15 @@
+{
+  "name": "prograde-roof-coatings",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 5250",
+    "build": "next build",
+    "start": "next start -p 5250"
+  },
+  "dependencies": {
+    "next": "^15.5.27",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  }
+}

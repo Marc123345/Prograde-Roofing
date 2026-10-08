@@ -1,0 +1,31 @@
+/* ============================================================
+   SummitRoof — Motion Tokens (Motion & Interaction Bible v1.0 §5)
+   Load BEFORE style.css. Single source of truth for all timing.
+   ============================================================ */
+:root{
+  /* durations */
+  --motion-instant:100ms;   /* press feedback */
+  --motion-fast:150ms;      /* color, focus ring, icon nudge */
+  --motion-quick:200ms;     /* buttons, dropdowns, small transforms */
+  --motion-base:300ms;      /* nav state, accordion, drawer */
+  --motion-medium:450ms;    /* card reveals, image fade */
+  --motion-slow:600ms;      /* hero + section reveals */
+  --motion-xslow:900ms;     /* clip/mask image reveals, loader out */
+
+  /* easing */
+  --ease-out:cubic-bezier(0.16,1,0.30,1);       /* DEFAULT enter (expo-out) */
+  --ease-out-soft:cubic-bezier(0.22,0.61,0.36,1);/* sliders, gentle */
+  --ease-in:cubic-bezier(0.40,0,1,1);            /* exits */
+  --ease-in-out:cubic-bezier(0.65,0,0.35,1);     /* A -> B moves */
+  --ease-spring:cubic-bezier(0.34,1.56,0.64,1);  /* overshoot: toggle, badge pop */
+
+  /* reveal geometry */
+  --reveal-y:24px; --reveal-y-sm:16px; --reveal-x:32px;
+  --stagger:70ms; --stagger-max:420ms;
+
+  /* back-compat aliases (existing components consume these) */
+  --dur-fast:var(--motion-quick);
+  --dur-base:var(--motion-base);
+  --dur-slow:var(--motion-slow);
+  --ease:var(--ease-out);
+}

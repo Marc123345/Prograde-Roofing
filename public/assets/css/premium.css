@@ -1,0 +1,296 @@
+/* ============================================================
+   SummitRoof — Premium Experience Layer
+   Loads AFTER style.css + animations.css. Motion/interaction ONLY.
+   No spacing / color / type / layout changes. Contract:
+   transform · opacity · clip-path · filter · backdrop-filter only.
+   Every timing routes through the Motion-Bible token scale.
+   ------------------------------------------------------------
+   TABLE OF CONTENTS   (jump with "N)")
+   ------------------------------------------------------------
+    1)  Brand loader ...................... capped ≤700ms
+    2)  Scroll progress ................... ember hairline
+    3)  Nav — condense + frosted backdrop
+    4)  Home dropdown — animated reveal
+    5)  Unified hover language ............ hover-gated
+    6)  Theme toggle — icon rotate + press
+    7)  Accordion — body fade/slide open
+    8)  Back-to-top — spring in
+    9)  Cookie bar — slide + fade dismiss
+   10)  Photography motion ............... Ken Burns / parallax
+   11)  Page transitions / word reveal / rhythm
+   12)  Reduced motion — neutralize all
+   13)  Lightbox — accessible image viewer
+   ============================================================ */
+
+/* ---------------------------------------------------------------
+   1) BRAND LOADER  (Phase 2)  — capped ≤700ms, self-removing.
+   Overlay sits above content; content parses behind it. The
+   <html class="no-loader"> guard (set pre-paint for repeat visitors
+   & reduced-motion) hides it with zero animation.
+--------------------------------------------------------------- */
+.sr-loader{
+  position:fixed;inset:0;z-index:2000;display:grid;place-items:center;
+  background:var(--bg);
+  transition:opacity var(--motion-slow) var(--ease-out),visibility var(--motion-slow);
+}
+.sr-loader__mark{width:64px;height:64px;overflow:visible}
+.sr-loader__mark path,.sr-loader__mark rect{
+  stroke:var(--cta);stroke-width:2;fill:transparent;
+  stroke-dasharray:120;stroke-dashoffset:120;
+  animation:sr-draw .62s var(--ease-out) forwards;
+}
+.sr-loader__mark rect{animation-delay:.14s}
+.sr-loader__word{
+  font-family:var(--font-display);font-weight:700;letter-spacing:.14em;
+  font-size:.82rem;color:var(--text);margin-top:14px;
+  opacity:0;transform:translateY(6px);
+  animation:sr-word .4s var(--ease-out) .32s forwards;
+}
+@keyframes sr-draw{to{stroke-dashoffset:0;fill:var(--cta)}}
+@keyframes sr-word{to{opacity:1;transform:none}}
+/* removed states */
+html.loaded .sr-loader{opacity:0;visibility:hidden;pointer-events:none}
+html.no-loader .sr-loader{display:none!important}
+
+/* ---------------------------------------------------------------
+   2) SCROLL PROGRESS  (Phase 3) — 2px ember hairline, transform-driven.
+--------------------------------------------------------------- */
+.sr-progress{
+  position:fixed;top:0;left:0;right:0;height:2px;z-index:1500;
+  background:var(--cta);transform:scaleX(0);transform-origin:0 50%;
+  will-change:transform;pointer-events:none;
+}
+
+/* ---------------------------------------------------------------
+   3) NAV — condense + frosted backdrop on scroll  (Phase 7)
+   Only opacity/backdrop/padding-via-transform-safe props.
+--------------------------------------------------------------- */
+.sr-nav{transition:box-shadow var(--motion-base) var(--ease-out),background var(--motion-base) var(--ease-out),backdrop-filter var(--motion-base)}
+@supports ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+  .sr-nav.is-stuck{
+    background:color-mix(in srgb,var(--surface) 82%,transparent);
+    -webkit-backdrop-filter:saturate(1.4) blur(12px);
+    backdrop-filter:saturate(1.4) blur(12px);
+  }
+}
+.sr-nav .sr-container{transition:padding-block var(--motion-base) var(--ease-out)}
+.sr-nav.is-stuck .sr-container{padding-block:10px}
+
+/* ---------------------------------------------------------------
+   4) HOME DROPDOWN — animated reveal (replaces display pop) (Phase 7)
+--------------------------------------------------------------- */
+@media(min-width:1025px){
+  .sr-drop-menu{
+    display:flex!important;                 /* keep in flow; toggle via opacity */
+    opacity:0;visibility:hidden;pointer-events:none;
+    transform:translateY(-8px) scale(.98);transform-origin:top left;
+    transition:opacity var(--motion-quick) var(--ease-out),transform var(--motion-quick) var(--ease-out),visibility var(--motion-quick);
+  }
+  .sr-drop:hover .sr-drop-menu,
+  .sr-drop:focus-within .sr-drop-menu,
+  .sr-drop.is-open .sr-drop-menu{
+    opacity:1;visibility:visible;pointer-events:auto;transform:none;
+  }
+  .sr-drop-menu a{transition:background var(--motion-fast),color var(--motion-fast),transform var(--motion-fast) var(--ease-out)}
+  .sr-drop-menu a:hover{transform:translateX(3px)}
+}
+
+/* ---------------------------------------------------------------
+   5) UNIFIED HOVER LANGUAGE  (Phase 5)  — hover-gated so touch is clean.
+--------------------------------------------------------------- */
+@media(hover:hover){
+  /* Buttons: lift + trailing icon slide; press feedback for everyone */
+  .sr-btn{transition:transform var(--motion-quick) var(--ease-out),box-shadow var(--motion-quick) var(--ease-out),background var(--motion-quick),border-color var(--motion-quick),color var(--motion-quick)}
+  .sr-btn>svg,.sr-btn .sr-ico,.sr-btn i{transition:transform var(--motion-quick) var(--ease-out)}
+  .sr-btn:hover>svg:last-child,.sr-btn:hover .sr-ico:last-child{transform:translateX(4px)}
+  .sr-btn--accent:hover{box-shadow:0 14px 34px rgba(239,95,26,.42)}
+
+  /* Nav + inline links: underline grows from the left */
+  .sr-nav-links>a,.sr-drop-toggle{position:relative}
+  .sr-nav-links>a::after,.sr-drop-toggle::after{
+    content:"";position:absolute;left:0;right:0;bottom:-4px;height:2px;
+    background:var(--cta);transform:scaleX(0);transform-origin:0 50%;
+    transition:transform var(--motion-quick) var(--ease-out);border-radius:2px;
+  }
+  .sr-nav-links>a:hover::after,.sr-nav-links>a.is-active::after,
+  .sr-drop:hover .sr-drop-toggle::after,.sr-drop.is-active .sr-drop-toggle::after{transform:scaleX(1)}
+
+  /* Cards: warm the border in concert with the existing lift */
+  .sr-card{transition:transform var(--motion-quick) var(--ease-out),box-shadow var(--motion-quick) var(--ease-out),border-color var(--motion-quick)}
+  .sr-card:hover{border-color:color-mix(in srgb,var(--cta) 40%,var(--border))}
+
+  /* Icon containers: lift + warm; glyph micro-spring (Phase 6) */
+  .sr-service__icon,.sr-step__num{transition:transform var(--motion-quick) var(--ease-out),background var(--motion-quick),color var(--motion-quick)}
+  .sr-card:hover .sr-service__icon,.sr-service:hover .sr-service__icon{transform:translateY(-2px) scale(1.06) rotate(-3deg)}
+  .sr-card:hover .sr-service__icon{background:color-mix(in srgb,var(--cta) 18%,var(--surface))}
+  .sr-step:hover .sr-step__num{transform:scale(1.08);transition-timing-function:var(--ease-spring)}
+
+  /* Footer + social/link warmth */
+  .sr-footer a{transition:color var(--motion-fast),transform var(--motion-fast) var(--ease-out)}
+  .sr-footer a:hover{transform:translateX(2px)}
+
+  /* Inline "Learn more →" style links: arrow nudge */
+  .sr-service a,.sr-blog__body a{transition:color var(--motion-fast)}
+  .sr-service a{display:inline-block}
+  .sr-service:hover a{color:var(--cta-hover)}
+
+  /* Gallery / media hover tint (works with existing scale zoom) */
+  .sr-blog__thumb,.sr-service__media{position:relative}
+}
+/* Press state — universal, not hover-gated (works on touch too) */
+.sr-btn:active{transform:translateY(0) scale(.97)}
+.sr-theme-toggle:active,.sr-top:active{transform:scale(.92)}
+
+/* ---------------------------------------------------------------
+   6) THEME TOGGLE — icon rotate + press  (Phase 7)
+--------------------------------------------------------------- */
+.sr-theme-toggle{transition:transform var(--motion-quick) var(--ease-spring),background var(--motion-fast),border-color var(--motion-fast)}
+.sr-theme-toggle:hover{transform:rotate(18deg)}
+
+/* ---------------------------------------------------------------
+   7) ACCORDION — body content fades/slides as it opens  (Phase 7)
+--------------------------------------------------------------- */
+.sr-acc__body p{opacity:0;transform:translateY(6px);transition:opacity var(--motion-base) var(--ease-out) .04s,transform var(--motion-base) var(--ease-out) .04s}
+.sr-acc.is-open .sr-acc__body p{opacity:1;transform:none}
+.sr-acc__icon{transition:transform var(--motion-base) var(--ease-spring),color var(--motion-fast)}
+
+/* ---------------------------------------------------------------
+   8) BACK-TO-TOP — spring in  (Phase 7)
+--------------------------------------------------------------- */
+.sr-top{transform:scale(.8) translateY(8px);transition:opacity var(--motion-base) var(--ease-out),transform var(--motion-base) var(--ease-spring)}
+.sr-top.is-vis{transform:scale(1) translateY(0)}
+@media(hover:hover){.sr-top:hover{transform:scale(1.07) translateY(-2px)}}
+
+/* ---------------------------------------------------------------
+   9) COOKIE BAR — slide + fade on dismiss  (Phase 7)
+--------------------------------------------------------------- */
+.sr-cookie{transition:opacity var(--motion-base) var(--ease-out),transform var(--motion-base) var(--ease-out)}
+.sr-cookie.is-hidden{display:flex!important;opacity:0;transform:translateY(16px);pointer-events:none}
+
+/* ---------------------------------------------------------------
+   10) PHOTOGRAPHY MOTION  (Phase 8) — Ken Burns + parallax hooks.
+   Desktop + fine-pointer + motion-allowed only.
+--------------------------------------------------------------- */
+@media(hover:hover) and (pointer:fine){
+  @media(prefers-reduced-motion:no-preference){
+    .sr-hero--full .sr-hero__bg img{
+      animation:sr-kenburns 22s var(--ease-in-out) 1.2s both alternate infinite;
+      will-change:transform;
+    }
+    /* JS writes --px/--py (-1..1) on the WRAPPER; Ken Burns scales the IMG.
+       Separate elements => the two transforms compose, never conflict. */
+    .sr-hero__bg[data-parallax]{
+      transform:translate3d(calc(var(--px,0)*10px),calc(var(--py,0)*8px),0);
+      transition:transform .25s var(--ease-out-soft);will-change:transform;
+    }
+  }
+}
+@keyframes sr-kenburns{
+  from{transform:scale(1.04) translate3d(0,0,0)}
+  to{transform:scale(1.10) translate3d(-0.6%,-0.6%,0)}
+}
+
+/* ---------------------------------------------------------------
+   11) PAGE TRANSITIONS  (Phase 9) — native View Transitions, progressive.
+--------------------------------------------------------------- */
+/* ---------------------------------------------------------------
+   WORD-LEVEL TEXT REVEAL  (Bixoo-gap C2) — masked rise + unblur per word.
+   Driven by .is-in on the heading's reveal container. CLS-safe (words wrap
+   in place; transforms don't reflow).
+--------------------------------------------------------------- */
+.sr-word{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.06em}
+.sr-word__i{
+  display:inline-block;transform:translateY(.95em);opacity:0;filter:blur(4px);
+  transition:transform var(--motion-slow) var(--ease-out),opacity var(--motion-slow) var(--ease-out),filter var(--motion-slow) var(--ease-out);
+  transition-delay:calc(var(--wi,0) * 45ms);
+}
+[data-reveal].is-in .sr-word__i{transform:none;opacity:1;filter:none}
+/* failsafe: if the reveal engine never runs, un-hide words via pure CSS */
+.js:not(.reveal-js) .sr-word__i{animation:sr-word-failsafe .01s linear 1.6s forwards}
+@keyframes sr-word-failsafe{to{transform:none;opacity:1;filter:none}}
+
+/* ---------------------------------------------------------------
+   RHYTHM — per-scene tempo (Experience pass). Re-timing ONLY: each
+   section reveals at a pacing that fits its emotional role. Variables
+   cascade to the section's reveal children; reveal.js sets data-tempo
+   by role and adds the anticipation --reveal-lead to content (not heads).
+--------------------------------------------------------------- */
+[data-tempo="hero"]      { --stagger:120ms; }                                    /* slow cinematic build */
+[data-tempo="brisk"]     { --reveal-dur:var(--motion-medium); --stagger:52ms;  --lead:70ms; }   /* confident, in formation */
+[data-tempo="walk"]      { --reveal-dur:var(--motion-medium); --stagger:130ms; --lead:110ms; }  /* step-by-step journey */
+[data-tempo="immersive"] { --reveal-dur:var(--motion-xslow);  --reveal-dur-clip:var(--motion-xslow); --stagger:110ms; --lead:220ms; --reveal-ease:var(--ease-out-soft); } /* let it breathe */
+[data-tempo="gravity"]   { --reveal-dur:760ms; --reveal-dur-clip:900ms; --stagger:90ms; --lead:200ms; } /* dark bands land with weight */
+[data-tempo="crescendo"] { --reveal-dur:720ms; --stagger:64ms; --lead:180ms; }                  /* the ask feels earned */
+[data-tempo="alive"]     { --reveal-dur:var(--motion-slow); --stagger:100ms; --lead:160ms; --reveal-ease:var(--ease-out-soft); } /* voices, gentle */
+[data-tempo="resolution"]{ --reveal-dur:820ms; --stagger:40ms; --lead:120ms; --reveal-ease:var(--ease-out-soft); } /* the exhale */
+
+/* ---- Considered hover weight (H2) — luxury is unhurried ---- */
+@media(hover:hover){
+  .sr-card{transition-duration:var(--motion-base)}                 /* 300ms, was ~200 */
+  .sr-service--photo .sr-service__media img,
+  .sr-blog__thumb img{transition-duration:760ms}                   /* photography settles, not snaps */
+  .sr-btn{transition-duration:var(--motion-base),var(--motion-base),var(--motion-quick),var(--motion-quick),var(--motion-quick)}
+}
+
+/* anchor targets land cleanly below the sticky nav (native + keyboard) */
+[id]{scroll-margin-top:92px}
+
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:sr-vt-out var(--motion-base) var(--ease-out) both}
+::view-transition-new(root){animation:sr-vt-in var(--motion-base) var(--ease-out) both}
+@keyframes sr-vt-out{to{opacity:0}}
+@keyframes sr-vt-in{from{opacity:0}}
+
+/* ---------------------------------------------------------------
+   12) REDUCED MOTION — neutralize everything premium adds.
+--------------------------------------------------------------- */
+@media(prefers-reduced-motion:reduce){
+  .sr-loader__mark path,.sr-loader__mark rect{animation:none;stroke-dashoffset:0;fill:var(--cta)}
+  .sr-loader__word{animation:none;opacity:1;transform:none}
+  .sr-hero--full .sr-hero__bg img,.sr-hero__bg[data-parallax] img{animation:none!important;transform:none!important}
+  .sr-progress{display:none}
+  .sr-word__i{transform:none!important;opacity:1!important;filter:none!important;animation:none!important}
+  ::view-transition-old(root),::view-transition-new(root){animation:none}
+}
+
+/* ---------------------------------------------------------------
+   13) Lightbox (Phase 8) — accessible, dependency-free image viewer.
+   Trigger with [data-lb]; group with [data-lb-group]. */
+.sr-lb-lock{overflow:hidden}
+.sr-lb{position:fixed;inset:0;z-index:300;display:none;align-items:center;justify-content:center;
+  background:rgba(8,11,15,.92);padding:clamp(16px,4vw,48px)}
+.sr-lb.is-open{display:flex}
+.sr-lb__stage{position:relative;max-width:1100px;width:100%;display:flex;flex-direction:column;
+  align-items:center;gap:14px;margin:0}
+.sr-lb__img{max-width:100%;max-height:80vh;width:auto;height:auto;border-radius:var(--radius-lg);
+  box-shadow:0 30px 80px rgba(0,0,0,.6);object-fit:contain;background:var(--slate-900)}
+.sr-lb__cap{color:#E7ECF2;font-size:.95rem;text-align:center;max-width:70ch}
+.sr-lb__count{position:absolute;top:clamp(16px,4vw,32px);left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.72);font-size:.8rem;letter-spacing:.04em}
+.sr-lb__close,.sr-lb__nav{position:absolute;z-index:2;display:flex;align-items:center;justify-content:center;
+  color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-pill);
+  backdrop-filter:blur(6px);transition:background var(--dur-fast),transform var(--dur-fast)}
+.sr-lb__close:hover,.sr-lb__nav:hover{background:rgba(255,255,255,.2)}
+.sr-lb__close:active,.sr-lb__nav:active{transform:scale(.92)}
+.sr-lb__close{top:clamp(16px,4vw,28px);right:clamp(16px,4vw,28px);width:48px;height:48px;font-size:1.9rem;line-height:1}
+.sr-lb__nav{top:50%;transform:translateY(-50%);width:52px;height:52px;font-size:2rem;line-height:1}
+.sr-lb__nav:active{transform:translateY(-50%) scale(.92)}
+.sr-lb__prev{left:clamp(8px,3vw,28px)}
+.sr-lb__next{right:clamp(8px,3vw,28px)}
+@media(max-width:640px){.sr-lb__nav{width:44px;height:44px;font-size:1.6rem}}
+.sr-lb__img.is-in{animation:sr-lb-fade .28s var(--ease) both}
+@keyframes sr-lb-fade{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+
+/* Zoom affordance on gallery items */
+.sr-lb-btn{position:absolute;top:12px;right:12px;z-index:3;width:38px;height:38px;border-radius:var(--radius-pill);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;
+  background:rgba(12,17,22,.55);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px);
+  opacity:0;transform:translateY(-4px);transition:opacity var(--dur-fast),transform var(--dur-fast),background var(--dur-fast)}
+.sr-gallery-item:hover .sr-lb-btn,.sr-lb-btn:focus-visible{opacity:1;transform:none}
+.sr-lb-btn:hover{background:var(--cta)}
+@media(hover:none){.sr-lb-btn{opacity:1;transform:none}}
+
+@media(prefers-reduced-motion:reduce){
+  .sr-lb__img.is-in{animation:none}
+  .sr-lb-btn{transition:none}
+}

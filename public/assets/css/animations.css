@@ -1,0 +1,70 @@
+/* ============================================================
+   SummitRoof — Reveal & Animation layer (Bible v1.0 §7)
+   Declarative [data-reveal] API + legacy .reveal. JS adds .is-in.
+   Content is ONLY hidden when <html class="js"> (set by JS) so a
+   no-JS / failed-JS page always shows content.
+   ============================================================ */
+
+/* hidden state (only under .js) */
+.js [data-reveal],
+.js .reveal{
+  opacity:0;
+  transition:
+    opacity var(--reveal-dur, var(--motion-slow)) var(--reveal-ease, var(--ease-out)),
+    transform var(--reveal-dur, var(--motion-slow)) var(--reveal-ease, var(--ease-out)),
+    clip-path var(--reveal-dur-clip, var(--motion-xslow)) var(--reveal-ease, var(--ease-out)),
+    filter var(--reveal-dur, var(--motion-slow)) var(--reveal-ease, var(--ease-out));
+  /* anticipation: content leads by --reveal-lead, then staggers */
+  transition-delay:calc(var(--reveal-lead, 0ms) + var(--reveal-i, 0) * var(--stagger));
+}
+.js [data-reveal]:not(.is-in),
+.js .reveal:not(.is-in){will-change:opacity, transform}
+
+/* default = fade-up (also legacy .reveal) */
+.js .reveal,
+.js [data-reveal="fade-up"]{transform:translateY(var(--reveal-y))}
+.js [data-reveal="fade-left"]{transform:translateX(calc(-1 * var(--reveal-x)))}
+.js [data-reveal="fade-right"]{transform:translateX(var(--reveal-x))}
+.js [data-reveal="zoom"]{transform:scale(.94)}
+.js [data-reveal="scale-in"]{transform:scale(.85)}
+.js [data-reveal="clip"]{clip-path:inset(0 0 100% 0)}
+.js [data-reveal="mask"]{clip-path:inset(0 100% 0 0)}
+/* focus-pull: fade-up with camera-style blur removal (section headings) */
+.js [data-reveal="focus"]{transform:translateY(var(--reveal-y));filter:blur(7px)}
+/* rise: card entrance — travel + slight scale for depth */
+.js [data-reveal="rise"]{transform:translateY(var(--reveal-y)) scale(.965)}
+
+/* revealed state */
+.js .reveal.is-in,
+.js [data-reveal].is-in{opacity:1;transform:none;clip-path:inset(0);filter:none;will-change:auto}
+
+/* ---- CSS-ONLY FAILSAFE ----------------------------------------------
+   The hidden state above depends on JS (reveal.js) to add .is-in. If that
+   file is blocked or 404s (e.g. a single page opened from a zip temp path
+   without the assets/js/ folder), content would stay at opacity:0 forever.
+   reveal.js adds <html class="reveal-js"> the instant it runs, disabling
+   this rule. So the failsafe only fires when reveal.js is NOT running:
+   after 1.4s it animates every reveal target to visible via pure CSS.
+   When reveal.js IS present it adds .reveal-js long before 1.4s, this rule
+   stops matching, and the JS-driven scroll reveal takes over cleanly. */
+.js:not(.reveal-js) [data-reveal],
+.js:not(.reveal-js) .reveal{
+  animation:sr-reveal-failsafe var(--motion-slow, .6s) var(--ease-out, ease) 1.4s both;
+}
+@keyframes sr-reveal-failsafe{
+  to{opacity:1;transform:none;clip-path:inset(0)}
+}
+
+/* smaller travel on mobile */
+@media(max-width:600px){
+  :root{--reveal-y:var(--reveal-y-sm)}
+}
+
+/* ---- Global reduced-motion guard (motion layer owns this) ---- */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important;
+  }
+  .js [data-reveal],.js .reveal{opacity:1!important;transform:none!important;clip-path:none!important;filter:none!important}
+}
