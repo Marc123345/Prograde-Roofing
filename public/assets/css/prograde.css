@@ -227,3 +227,10 @@ body { background: var(--bg); }
 /* Outline buttons sit on the dark page hero */
 .pg-page-hero .sr-btn--outline { color: #fff; border-color: rgba(255, 255, 255, 0.45); }
 .pg-page-hero .sr-btn--outline:hover { color: var(--gold-400); border-color: var(--gold-400); }
+
+/* Square corners everywhere (Marc, 8 Oct 2026). Zeroing the template's radius
+   tokens squares every card, button, field, photo and chip in one place. */
+:root,
+.dark {
+  --radius-xs: 0; --radius-sm: 0; --radius-md: 0; --radius-lg: 0; --radius-xl: 0; --radius-pill: 0;
+}
