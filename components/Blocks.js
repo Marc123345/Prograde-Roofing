@@ -1,5 +1,6 @@
 // Page sections, built from SummitRoof template markup (class names and
 // structure kept so its CSS and motion scripts apply unchanged).
+import { useState } from "react"
 import Icon from "./Icon"
 import InspectionForm from "./InspectionForm"
 import { site, trust, smsHref, telHref } from "@/data/site"
@@ -305,17 +306,37 @@ export function StockPhoto({ img, caption, ratio = "4/3" }) {
     )
 }
 
-// Grid of his jobs: before/after sliders and single photos.
+// Grid of his jobs: before/after sliders and single photos. On phones only
+// the first 3 show until "Show more" is tapped (pure CSS hide, so the
+// before/after scripts have already bound to every item).
 export function Gallery({ eyebrow = "Our work", title, lead, items, soft, cols = 3 }) {
+    const [all, setAll] = useState(false)
+    const extra = items.length - 3
     return (
         <section className={`sr-section${soft ? " sr-section--soft" : ""}`}>
             <div className="sr-container" style={cols === 2 ? { maxWidth: 900 } : undefined}>
                 <SectionHead eyebrow={eyebrow} title={title} lead={lead} />
-                <div className={`sr-grid sr-cols-${cols}`}>
+                <div className={`sr-grid sr-cols-${cols} pg-gallery${all ? " is-all" : ""}`}>
                     {items.map((it, i) =>
                         it.before ? <BeforeAfter key={i} job={it} /> : <PhotoCard key={i} img={it.img} title={it.title} tag={it.tag} graphic={it.graphic} />
                     )}
                 </div>
+                {extra > 0 && !all && (
+                    <p className="pg-gallery-more">
+                        <button
+                            type="button"
+                            className="sr-btn sr-btn--outline"
+                            onClick={(e) => {
+                                // Hidden items were never scrolled into view, so the reveal
+                                // engine still holds them at opacity 0. Show them now.
+                                e.currentTarget.closest(".sr-container").querySelectorAll(".pg-gallery > [data-reveal]").forEach((el) => el.classList.add("is-in"))
+                                setAll(true)
+                            }}
+                        >
+                            Show {extra} more {extra === 1 ? "job" : "jobs"}
+                        </button>
+                    </p>
+                )}
             </div>
         </section>
     )

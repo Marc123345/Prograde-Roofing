@@ -301,3 +301,60 @@ body { background: var(--bg); }
 }
 .pg-radio-row label { min-height: 44px; padding: 8px 16px; }
 @media (max-width: 1024px) { .sr-nav-links.is-open .sr-drop-menu { width: 100%; } }
+
+/* ============================================================
+   Mobile polish (second pass): shorter pages, tidier rhythm
+   ============================================================ */
+.pg-gallery-more { display: none; }
+
+@media (max-width: 600px) {
+  /* Headings and section rhythm. */
+  h1 { font-size: 2rem; }
+  .sr-section-head { margin-bottom: 28px; }
+  .sr-section { padding-block: 52px; }
+  .pg-page-hero { padding-block: 40px 48px; }
+
+  /* Every in-content button: full width, label centred on one line. */
+  main .sr-btn { width: 100%; justify-content: center; }
+
+  /* Galleries: first 3 jobs, then "Show more". */
+  .pg-gallery:not(.is-all) > :nth-child(n + 4) { display: none; }
+  .pg-gallery-more { display: block; margin-top: 20px; }
+
+  /* Home service cards: photo left, text right (was a full-width photo,
+     an icon and padding per card: ~2 screens for 6 cards). */
+  .sr-service--photo { display: grid; grid-template-columns: 112px 1fr; }
+  .sr-service--photo .sr-service__media { aspect-ratio: auto; height: 100%; min-height: 128px; }
+  .sr-service--photo .sr-service__body { padding: 14px 16px; }
+  .sr-service--photo .sr-service__icon { display: none; }
+  .sr-service--photo h3 { font-size: 1.05rem !important; margin-bottom: 4px; }
+  .sr-service--photo p { font-size: 0.875rem; line-height: 1.5; margin-bottom: 6px; }
+  .pg-card-panel .pg-icon { width: 36px; height: 36px; }
+
+  /* Process steps: number beside the title, tighter cards. */
+  .sr-step { display: grid; grid-template-columns: 40px 1fr; column-gap: 14px; padding: 16px; }
+  .sr-step__num { grid-row: span 2; margin-bottom: 0; }
+  .sr-step h4 { margin: 8px 0 4px; }
+  .sr-grid { gap: 12px; }
+
+  /* Icon cards (flat page, landing page): icon beside the title. */
+  .sr-service:not(.sr-service--photo) { display: grid; grid-template-columns: 44px 1fr; column-gap: 14px; padding: 18px; }
+  .sr-service:not(.sr-service--photo) .sr-service__icon { width: 44px; height: 44px; grid-row: span 2; margin: 0; }
+  .sr-service:not(.sr-service--photo) h3 { font-size: 1.1rem; margin: 2px 0 4px; }
+  .sr-service:not(.sr-service--photo) p { margin: 0; font-size: 0.9rem; }
+
+  /* Forms: no double gap between stacked fields. */
+  .sr-field-row { gap: 0; }
+  .sr-form-card { padding: 22px 18px; }
+
+  /* Footer: services and areas side by side. */
+  .sr-footer { padding-block: 48px 24px; }
+  .sr-footer__top { grid-template-columns: 1fr 1fr; gap: 28px 16px; }
+  .sr-footer__top > div:first-child, .sr-footer__top > div:last-child { grid-column: 1 / -1; }
+  .sr-footer h4 { margin-bottom: 4px; }
+  .sr-footer li a { font-size: 0.9rem; }
+}
+@media (max-width: 600px) {
+  .pg-fit > div { padding: 20px 18px; }
+  .pg-fit .pg-checks { padding: 0; background: none; }
+}

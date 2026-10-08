@@ -15,7 +15,9 @@ export const site = {
     name: "ProGrade Roof Coatings",
     short: "ProGrade",
     owner: "William Gorman",
-    phone: "(724) 972-8262",
+    // Non-breaking space and hyphen so the number never splits across lines on
+    // phones. Links use `tel` below, so dialling is unaffected.
+    phone: "(724)\u00a0972\u20118262",
     tel: "+17249728262",
     email: "pgexteriors@icloud.com",
     hic: "PA HIC #PA200235",
