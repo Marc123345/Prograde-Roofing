@@ -1,8 +1,7 @@
-import Head from "next/head"
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
-import { SectionHead, BeforeAfter, Img } from "@/components/Blocks"
+import { SectionHead, BeforeAfter, Img, HeroBg } from "@/components/Blocks"
 import { site, jobs, faq } from "@/data/site"
 
 // Facebook ad landing page (plan 4.15). No navigation, no exits besides
@@ -27,11 +26,8 @@ export default function BarnLanding() {
             title="Free Barn Roof Inspection | ProGrade Roof Coatings"
             description="Stop barn roof leaks and rust without a new roof. Free inspection in Western PA, OH and WV."
         >
-            <Head>
-                <link rel="preload" as="image" type="image/webp" imageSrcSet={jobs.barn.after.webp} imageSizes="100vw" fetchpriority="high" />
-            </Head>
             <section className="sr-hero sr-hero--full sr-hero--split">
-                <div className="sr-hero__bg"><Img img={{ ...jobs.barn.after, alt: "" }} sizes="100vw" priority /></div>
+                <div className="sr-hero__bg"><HeroBg img={jobs.barn.after} /></div>
                 <div className="sr-container">
                     <div className="sr-hero__content">
                         <span className="sr-eyebrow pg-hero-eyebrow">Barns and pole buildings</span>

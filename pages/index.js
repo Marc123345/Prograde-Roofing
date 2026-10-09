@@ -1,8 +1,7 @@
-import Head from "next/head"
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
-import { TrustBar, SectionHead, Steps, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, faqSchema } from "@/components/Blocks"
+import { TrustBar, SectionHead, Steps, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, HeroBg, faqSchema } from "@/components/Blocks"
 import { site, services, jobSteps, whyUs, jobs, reels, faq, states, smsHref, telHref } from "@/data/site"
 
 const homeFaq = [faq.rusty, faq.cost, faq.life, faq.shutdown]
@@ -14,13 +13,10 @@ export default function Home() {
             description={`Licensed, insured roof coating for barns, metal, commercial and home roofs in Western PA, eastern Ohio and northern WV. Free inspections. Call ${site.phone}.`}
             schema={[{ "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: site.url }, faqSchema(homeFaq)]}
         >
-            <Head>
-                <link rel="preload" as="image" type="image/webp" imageSrcSet={jobs.steel.after.webp} imageSizes="100vw" fetchpriority="high" />
-            </Head>
             {/* Hero: template Home 01 (full photo + inline form) */}
             <section className="sr-hero sr-hero--full sr-hero--split">
                 <div className="sr-hero__bg">
-                    <Img img={{ ...jobs.steel.after, alt: "" }} sizes="100vw" priority />
+                    <HeroBg img={jobs.steel.after} />
                 </div>
                 <div className="sr-container">
                     <div className="sr-hero__content">

@@ -376,3 +376,19 @@ body { background: var(--bg); }
 /* 2. Safety net: nothing can ever widen the page. `clip` (not `hidden`)
    keeps the sticky header working and doesn't create a scroll container. */
 html, body { overflow-x: clip; max-width: 100%; }
+
+/* ============================================================
+   Mobile LCP: above-the-fold content never waits for animation JS.
+   The template hid hero text/images (opacity 0) until the motion bundle
+   loaded after hydration, then faded them in. On phones that held the
+   page's largest element back ~3s. Hero content is visible immediately;
+   reveals further down the page are unchanged.
+   ============================================================ */
+@media (max-width: 900px) {
+  .js .sr-hero [data-reveal], .js .sr-hero .reveal,
+  .js .pg-page-hero [data-reveal], .js .pg-page-hero .reveal,
+  .js .sr-hero .sr-word__i, .js .pg-page-hero .sr-word__i {
+    opacity: 1 !important; transform: none !important; filter: none !important;
+    clip-path: none !important; transition: none !important; animation: none !important;
+  }
+}

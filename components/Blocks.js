@@ -1,6 +1,7 @@
 // Page sections, built from SummitRoof template markup (class names and
 // structure kept so its CSS and motion scripts apply unchanged).
 import { useState } from "react"
+import Head from "next/head"
 import Icon from "./Icon"
 import InspectionForm from "./InspectionForm"
 import { site, trust, smsHref, telHref } from "@/data/site"
@@ -28,6 +29,25 @@ export function Img({ img, sizes = "(max-width: 900px) 100vw, 50vw", priority, c
             <source type="image/webp" srcSet={img.webp} sizes={sizes} />
             {pic}
         </picture>
+    )
+}
+
+// Full-bleed hero photo. Phones always get the 480px WebP: the photo sits
+// under a ~85% dark overlay, so more pixels are invisible but cost LCP time.
+export function HeroBg({ img }) {
+    const small = img.webp.split(", ")[0].split(" ")[0]
+    return (
+        <>
+            <Head>
+                <link rel="preload" as="image" type="image/webp" href={small} media="(max-width: 600px)" fetchpriority="high" />
+                <link rel="preload" as="image" type="image/webp" imageSrcSet={img.webp} imageSizes="100vw" media="(min-width: 601px)" fetchpriority="high" />
+            </Head>
+            <picture style={{ display: "contents" }}>
+                <source media="(max-width: 600px)" type="image/webp" srcSet={small} />
+                <source type="image/webp" srcSet={img.webp} sizes="100vw" />
+                <img src={img.src} srcSet={img.srcSet} sizes="100vw" alt="" fetchpriority="high" decoding="sync" />
+            </picture>
+        </>
     )
 }
 
