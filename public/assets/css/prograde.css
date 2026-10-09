@@ -358,3 +358,21 @@ body { background: var(--bg); }
   .pg-fit > div { padding: 20px 18px; }
   .pg-fit .pg-checks { padding: 0; background: none; }
 }
+
+/* ============================================================
+   Sideways-scroll fix (9 Oct 2026)
+   The template's "fade-left/right" reveals park each block 32px to the
+   side until it scrolls into view. On a phone that pushed the page 16px
+   wider than the screen, so it could be dragged left and right.
+   ============================================================ */
+/* 1. Phones: side reveals become a straight fade-up (no sideways travel). */
+@media (max-width: 900px) {
+  :root { --reveal-x: 0px; }
+  .js [data-reveal="fade-left"],
+  .js [data-reveal="fade-right"] { transform: translateY(var(--reveal-y)); }
+  .js [data-reveal="fade-left"].is-in,
+  .js [data-reveal="fade-right"].is-in { transform: none; }
+}
+/* 2. Safety net: nothing can ever widen the page. `clip` (not `hidden`)
+   keeps the sticky header working and doesn't create a scroll container. */
+html, body { overflow-x: clip; max-width: 100%; }
