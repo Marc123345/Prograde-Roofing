@@ -40,8 +40,9 @@
    @font-face{font-family:'Inter';src:url('../fonts/inter-500.woff2') format('woff2');font-weight:500;font-display:swap}
    @font-face{font-family:'Inter';src:url('../fonts/inter-600.woff2') format('woff2');font-weight:600;font-display:swap}
    ============================================================ */
-@font-face{font-family:'Sora';src:local('Sora');font-weight:600 700;font-display:swap}
-@font-face{font-family:'Inter';src:local('Inter');font-weight:400 600;font-display:swap}
+/* ProGrade: fonts are self-hosted via next/font in pages/_app.js. The template's
+   local('Sora')/local('Inter') faces were removed: they shared the family name
+   and won the match, so Inter silently fell back to a system font. */
 
 /* ============  2.0  Design tokens (primitives + semantic, light/dark)  ============ */
 :root{

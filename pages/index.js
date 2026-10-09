@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
@@ -13,6 +14,9 @@ export default function Home() {
             description={`Licensed, insured roof coating for barns, metal, commercial and home roofs in Western PA, eastern Ohio and northern WV. Free inspections. Call ${site.phone}.`}
             schema={[{ "@context": "https://schema.org", "@type": "WebSite", name: site.name, url: site.url }, faqSchema(homeFaq)]}
         >
+            <Head>
+                <link rel="preload" as="image" type="image/webp" imageSrcSet={jobs.steel.after.webp} imageSizes="100vw" fetchpriority="high" />
+            </Head>
             {/* Hero: template Home 01 (full photo + inline form) */}
             <section className="sr-hero sr-hero--full sr-hero--split">
                 <div className="sr-hero__bg">
@@ -46,7 +50,7 @@ export default function Home() {
                     <div className="sr-grid sr-cols-3">
                         {[...services, { href: "/roof-coating-vs-replacement", icon: "dollar", title: "Coating vs replacement", text: "Not sure which your roof needs? A straight comparison of cost, time and lifespan." }].map((s) => (
                             <a className="sr-card sr-service sr-service--photo" href={s.href} key={s.href}>
-                                <div className="sr-service__media">{s.img ? <Img img={{ ...s.img, alt: "" }} sizes="(max-width: 600px) 100vw, (max-width: 900px) 50vw, 33vw" /> : <div className="pg-card-panel"><Icon name={s.icon} /></div>}</div>
+                                <div className="sr-service__media">{s.img ? <Img img={{ ...s.img, alt: "" }} sizes="(max-width: 600px) 112px, (max-width: 900px) 50vw, 400px" /> : <div className="pg-card-panel"><Icon name={s.icon} /></div>}</div>
                                 <div className="sr-service__body">
                                     <div className="sr-service__icon"><Icon name={s.icon} /></div>
                                     <h3 style={{ fontSize: "1.2rem" }}>{s.title}</h3>

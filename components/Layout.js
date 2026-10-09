@@ -68,7 +68,7 @@ function Header({ path }) {
             <header className="sr-nav">
                 <div className="sr-container">
                     <a className="sr-logo" href="/" aria-label={`${site.name}, home`}>
-                        <img src="/media/logo-160.png" alt="" width="188" height="160" />
+                        <picture><source type="image/webp" srcSet="/media/logo-104.webp 1x, /media/logo-144.webp 2x" /><img src="/media/logo-104.png" srcSet="/media/logo-104.png 1x, /media/logo-144.png 2x" alt="" width="122" height="104" /></picture>
                     </a>
                     <nav className="sr-nav-links" aria-label="Primary">
                         <div className={`sr-drop${inServices ? " is-active" : ""}`}>
@@ -109,7 +109,7 @@ function Footer() {
                 <div className="sr-footer__top">
                     <div>
                         <a className="sr-logo" href="/" aria-label={`${site.name}, home`}>
-                            <img src="/media/logo-160.png" alt="" width="188" height="160" />
+                            <picture><source type="image/webp" srcSet="/media/logo-104.webp 1x, /media/logo-144.webp 2x" /><img src="/media/logo-104.png" srcSet="/media/logo-104.png 1x, /media/logo-144.png 2x" alt="" width="122" height="104" /></picture>
                         </a>
                         <p className="sr-small">Barn, metal, commercial and home roof coating across {site.region}.</p>
                         <p className="sr-small" style={{ marginTop: 12 }}>{site.hic} · Licensed and insured</p>
@@ -165,7 +165,7 @@ export default function Layout({ title, description, noindex, schema, landing, c
             {landing ? (
                 <div className="pg-lp-bar">
                     <div className="sr-container">
-                        <img src="/media/logo-160.png" alt={site.name} width="188" height="160" />
+                        <picture><source type="image/webp" srcSet="/media/logo-104.webp 1x, /media/logo-144.webp 2x" /><img src="/media/logo-104.png" srcSet="/media/logo-104.png 1x, /media/logo-144.png 2x" alt={site.name} width="122" height="104" /></picture>
                         <a className="sr-btn sr-btn--accent sr-btn--sm" href={telHref}><Icon name="phone" />{site.phone}</a>
                     </div>
                 </div>

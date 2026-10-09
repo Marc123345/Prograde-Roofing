@@ -65,7 +65,9 @@ export const trust = [
 // William's own jobs, from his Facebook page. Captions only state what the
 // photos show. Hookstown (Beaver County, PA) is lettered on the building; the
 // other towns are not known, so no town is given for them.
-const jp = (n) => ({ src: `/media/jobs/${n}-1600.jpg`, srcSet: `/media/jobs/${n}-800.jpg 800w, /media/jobs/${n}-1600.jpg 1600w` })
+// Each photo exists at 480/800/1600px as WebP (served first) and JPEG (fallback).
+const sizesFor = (dir, n, ext) => [480, 800, 1600].map((w) => `/media/${dir}/${n}-${w}.${ext} ${w}w`).join(", ")
+const jp = (n) => ({ src: `/media/jobs/${n}-800.jpg`, srcSet: sizesFor("jobs", n, "jpg"), webp: sizesFor("jobs", n, "webp") })
 export const jobs = {
     barn: {
         title: "Red barn, metal roof",
@@ -127,7 +129,7 @@ export const jobs = {
 // (none on his Facebook as of 8 Oct 2026). Marc approved stock for the flat
 // roof page until he sends his own. Wikimedia Commons; CC BY-SA images MUST
 // keep their visible credit. Never caption these as ProGrade jobs.
-const sp = (n) => ({ src: `/media/stock/${n}-1600.jpg`, srcSet: `/media/stock/${n}-800.jpg 800w, /media/stock/${n}-1600.jpg 1600w` })
+const sp = (n) => ({ src: `/media/stock/${n}-800.jpg`, srcSet: sizesFor("stock", n, "jpg"), webp: sizesFor("stock", n, "webp") })
 const wm = (file) => `https://commons.wikimedia.org/wiki/File:${file}`
 export const stock = {
     epdmFinished: { ...sp("epdm-finished"), alt: "A finished rubber (EPDM) flat roof with a clean parapet edge", credit: null },
@@ -137,7 +139,7 @@ export const stock = {
 }
 
 // William's reels. Muted, inline, poster frame shown until played.
-const reel = (id, title) => ({ src: `/media/video/reel-${id}.mp4`, poster: `/media/video/reel-${id}.jpg`, title })
+const reel = (id, title) => ({ src: `/media/video/reel-${id}.mp4`, poster: `/media/video/reel-${id}.webp`, title })
 export const reels = {
     rust: reel("28388720454130659", "Prepping a rusted roof"),
     seams: reel("1618906662551782", "Every seam and exposed fastener sealed"),

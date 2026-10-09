@@ -1,3 +1,4 @@
+import Head from "next/head"
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
@@ -26,6 +27,9 @@ export default function BarnLanding() {
             title="Free Barn Roof Inspection | ProGrade Roof Coatings"
             description="Stop barn roof leaks and rust without a new roof. Free inspection in Western PA, OH and WV."
         >
+            <Head>
+                <link rel="preload" as="image" type="image/webp" imageSrcSet={jobs.barn.after.webp} imageSizes="100vw" fetchpriority="high" />
+            </Head>
             <section className="sr-hero sr-hero--full sr-hero--split">
                 <div className="sr-hero__bg"><Img img={{ ...jobs.barn.after, alt: "" }} sizes="100vw" priority /></div>
                 <div className="sr-container">

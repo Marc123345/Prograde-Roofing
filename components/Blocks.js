@@ -5,18 +5,29 @@ import Icon from "./Icon"
 import InspectionForm from "./InspectionForm"
 import { site, trust, smsHref, telHref } from "@/data/site"
 
-export function Img({ img, sizes = "(max-width: 900px) 100vw, 50vw", priority, ...rest }) {
-    return (
+// <picture>: WebP first, JPEG fallback, three widths. `sizes` must describe
+// the rendered width so phones fetch the 480px file, not the 1600px one.
+export function Img({ img, sizes = "(max-width: 900px) 100vw, 50vw", priority, className, style, ...rest }) {
+    const pic = (
         <img
             src={img.src}
             srcSet={img.srcSet}
             sizes={sizes}
             alt={img.alt}
+            className={className}
+            style={style}
             loading={priority ? undefined : "lazy"}
             fetchpriority={priority ? "high" : undefined}
-            decoding="async"
+            decoding={priority ? "sync" : "async"}
             {...rest}
         />
+    )
+    if (!img.webp) return pic
+    return (
+        <picture style={{ display: "contents" }}>
+            <source type="image/webp" srcSet={img.webp} sizes={sizes} />
+            {pic}
+        </picture>
     )
 }
 
@@ -156,8 +167,8 @@ export function BeforeAfter({ job, place }) {
         <div className="sr-gallery-item">
             <div className="sr-ba">
                 <button className="sr-lb-btn" data-lb={job.after.src} data-lb-cap={`${job.title}, after coating`} data-lb-group="work" aria-label="View the finished roof larger"><Icon name="expand" /></button>
-                <Img img={job.before} sizes="(max-width: 900px) 100vw, 640px" />
-                <Img img={job.after} className="sr-ba__after" sizes="(max-width: 900px) 100vw, 640px" />
+                <Img img={job.before} sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 50vw, 420px" />
+                <Img img={job.after} className="sr-ba__after" sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 50vw, 420px" />
                 <span className="sr-ba__handle" />
                 <span className="sr-ba__tag sr-ba__tag--b">Before</span>
                 <span className="sr-ba__tag sr-ba__tag--a">After</span>
@@ -172,7 +183,7 @@ export function PhotoCard({ img, title, tag, graphic }) {
         <div className={`sr-gallery-item${graphic ? " pg-graphic" : ""}`}>
             <div className="sr-ba" style={{ cursor: "default" }}>
                 <button className="sr-lb-btn" data-lb={img.src} data-lb-cap={title} data-lb-group="work" aria-label="View photo larger"><Icon name="expand" /></button>
-                <Img img={img} sizes="(max-width: 900px) 100vw, 640px" />
+                <Img img={img} sizes="(max-width: 600px) calc(100vw - 32px), (max-width: 900px) 50vw, 420px" />
             </div>
             <div className="sr-gallery-item__cap"><strong>{title}</strong><span>{tag}</span></div>
         </div>
