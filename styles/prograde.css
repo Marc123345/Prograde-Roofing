@@ -487,3 +487,40 @@ a.pg-bento__item:focus-visible { outline: 3px solid var(--gold-500); outline-off
   .pg-page-hero__bg img { object-position: 50% 40%; }
   .pg-page-hero__bg::after { background: linear-gradient(180deg, rgba(8,10,13,.3) 0%, rgba(8,10,13,.72) 32%, rgba(8,10,13,.92) 62%, rgba(8,10,13,.96) 100%); }
 }
+
+/* ============================================================
+   Mobile touch targets (Oct 2026 audit at 390px): everything a thumb
+   aims at is at least 44px. Small text links get a bigger hit area via
+   padding + matching negative margin, so the layout doesn't move.
+   ============================================================ */
+@media (max-width: 900px) {
+  /* Buttons and chips that were 41px tall */
+  .sr-btn { min-height: 48px; }
+  .sr-chip { min-height: 44px; padding-block: 10px; }
+
+  /* Breadcrumbs ("Home · Service Areas") and stock-photo credit links */
+  .sr-caption a, .pg-stock__cap a {
+    display: inline-block; padding: 14px 4px; margin: -14px -4px;
+  }
+
+  /* Footer bottom row: Privacy Policy / Sitemap */
+  .sr-footer__bottom a { display: inline-flex; align-items: center; min-height: 44px; padding-inline: 2px; }
+
+  /* Short footer and menu links like "FAQ": full tap height and a wider target */
+  .sr-footer a { min-width: 44px; }
+
+  /* Inspection form: bigger radios and consent box, readable fine print */
+  .pg-radio-row { gap: 10px; }
+  .pg-radio-row input { width: 20px; height: 20px; margin: 0; }
+  .pg-consent__box { grid-template-columns: 26px 1fr; min-height: 44px; padding-block: 4px; font-size: 0.875rem; }
+  .pg-consent__box input { width: 24px; height: 24px; }
+  .pg-consent__privacy { font-size: 0.8125rem; }
+  .pg-consent__privacy a { display: inline-block; padding: 12px 2px; margin: -12px -2px; }
+
+  /* Inline phone/email links in running copy (free-inspection page) */
+  .sr-split p a[href^="tel:"], .sr-split p a[href^="mailto:"] { display: inline-block; padding: 12px 0; margin: -12px 0; }
+}
+
+/* Licence credit for a stock photo inside a bento tile */
+.pg-bento__credit { position: absolute; top: 10px; right: 10px; z-index: 2; padding: 3px 8px; border-radius: 999px; background: rgba(10,10,10,.6); color: rgba(255,255,255,.85); font-size: .7rem; line-height: 1.4; text-decoration: none; }
+.pg-bento__credit:hover { color: #fff; text-decoration: underline; }

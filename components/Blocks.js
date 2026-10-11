@@ -392,6 +392,11 @@ export function ProcessBento({ eyebrow = "The process", title, steps }) {
                                     sizes={i === 0 ? "(max-width: 600px) calc(100vw - 32px), (max-width: 1100px) 100vw, 620px" : "(max-width: 600px) calc(100vw - 32px), (max-width: 1100px) 50vw, 300px"}
                                 />
                             </div>
+                            {s.credit && (
+                                <a className="pg-bento__credit" href={s.credit.src} target="_blank" rel="noopener">
+                                    Photo: {s.credit.by}, {s.credit.lic}
+                                </a>
+                            )}
                             <div className="pg-bento__body">
                                 <span className="pg-bento__num">{String(i + 1).padStart(2, "0")}</span>
                                 <h3>{s.title}</h3>

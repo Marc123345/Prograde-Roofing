@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
-import { PageHero, CallButtons, TrustBar, Split, Checks, Steps, Reels, Faq, FinalCta, SectionHead, StockPhoto, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
-import { site, reels, faq, stock } from "@/data/site"
+import { PageHero, CallButtons, TrustBar, Split, Checks, Reels, Faq, FinalCta, SectionHead, StockPhoto, faqSchema, serviceSchema, breadcrumbSchema, ProcessBento } from "@/components/Blocks"
+import { site, reels, faq, stock, jobs } from "@/data/site"
 
 // Added 8 Oct 2026: William coats rubber and flat roofs as well as metal.
 // ⚠ No photos of his flat/rubber jobs yet. The photos here are licensed STOCK
@@ -73,7 +73,18 @@ export default function Flat() {
                 <a className="sr-btn sr-btn--dark" href="/residential-roof-coating" style={{ marginTop: 24 }}>Residential roof coating <Icon name="arrow" /></a>
             </Split>
 
-            <Steps eyebrow="Process" title="How we coat a flat or rubber roof" steps={steps} soft={false} />
+            <ProcessBento
+                eyebrow="Process"
+                title="How we coat a flat or rubber roof"
+                steps={[
+                    // Stock (licensed, credited in the tile): no flat-roof photo of William's yet.
+                    { ...steps[0], img: stock.membraneFailure, credit: stock.membraneFailure.credit },
+                    { ...steps[1], img: { src: reels.spray.poster } },
+                    { ...steps[2], img: { src: reels.fasteners.poster } },
+                    { ...steps[3], img: jobs.firehallCoating },
+                    { ...steps[4], img: stock.epdmFinished },
+                ]}
+            />
 
             <section className="sr-section sr-section--soft">
                 <div className="sr-container" style={{ maxWidth: 980 }}>
