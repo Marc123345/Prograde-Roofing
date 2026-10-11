@@ -2,7 +2,7 @@ import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
 import { TrustBar, SectionHead, ProcessBento, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, HeroBg, faqSchema } from "@/components/Blocks"
-import { site, services, jobSteps, whyUs, jobs, reels, faq, states, smsHref, telHref } from "@/data/site"
+import { site, services, jobSteps, whyUs, jobs, reels, faq, states, telHref } from "@/data/site"
 
 const homeFaq = [faq.rusty, faq.cost, faq.life, faq.shutdown]
 
@@ -28,7 +28,6 @@ export default function Home() {
                         <div className="sr-hero__ctas" style={{ marginTop: 28 }}>
                             <a className="sr-btn sr-btn--accent sr-btn--lg" href="/free-inspection">Book a Free Inspection</a>
                             <a className="sr-btn sr-btn--outline sr-btn--lg" href={telHref}><Icon name="phone" />Call {site.phone}</a>
-                            <a className="sr-btn sr-btn--outline sr-btn--lg" href={smsHref}><Icon name="sms" />Text Us a Photo</a>
                         </div>
                     </div>
                     <div className="sr-hero__form">

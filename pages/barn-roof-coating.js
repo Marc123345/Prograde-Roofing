@@ -12,7 +12,7 @@ const reasons = [
     { icon: "barn", title: "Your barn stays in use", text: "We work around your operation and your animals." },
 ]
 const steps = [
-    { title: "Fill out the form or text us a photo", text: "" },
+    { title: "Fill out the form or give us a call", text: "" },
     { title: "We inspect your roof for free and give you a written price", text: "" },
     { title: "We coat it and walk the finished roof with you", text: "" },
 ]

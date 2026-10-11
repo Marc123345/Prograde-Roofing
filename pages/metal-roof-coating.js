@@ -20,6 +20,7 @@ export default function Metal() {
             schema={[serviceSchema("Metal roof coating", "/metal-roof-coating"), faqSchema(qs), breadcrumbSchema([{ name: "Metal Roof Coating", path: "/metal-roof-coating" }])]}
         >
             <PageHero
+                photo
                 crumbs={[{ label: "Metal Roof Coating" }]}
                 eyebrow="Metal roofs"
                 title="Metal Roof Coating and Rust Repair"

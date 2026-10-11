@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, Steps, Values, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
-import { site, whyUs, jobs, reels, faq, trust, smsHref } from "@/data/site"
+import { site, whyUs, jobs, reels, faq, trust, telHref } from "@/data/site"
 
 const steps = [
     { title: "Inspect", text: "We walk the roof and check the panels, screws, laps and flashing. If panels are rusted through or the structure is failing, we'll say so." },
@@ -29,6 +29,7 @@ export default function Agricultural() {
             schema={[serviceSchema("Agricultural roof coating", "/agricultural-roof-coating"), faqSchema(qs), breadcrumbSchema([{ name: "Agricultural Roof Coating", path: "/agricultural-roof-coating" }])]}
         >
             <PageHero
+                photo
                 crumbs={[{ label: "Agricultural Roof Coating" }]}
                 eyebrow="Barns, pole buildings, farm sheds"
                 title="Agricultural Roof Coating for Barns, Pole Buildings and Farm Sheds"
@@ -37,7 +38,7 @@ export default function Agricultural() {
             >
                 <div className="pg-hero-ctas">
                     <a className="sr-btn sr-btn--accent sr-btn--lg" href="/free-inspection">Book a Free Barn Roof Inspection</a>
-                    <a className="sr-btn sr-btn--outline sr-btn--lg" href={smsHref}><Icon name="sms" />Text Us a Photo</a>
+                    <a className="sr-btn sr-btn--outline sr-btn--lg" href={telHref}><Icon name="phone" />Call {site.phone}</a>
                 </div>
             </PageHero>
             <TrustBar items={[`${site.years} years coating farm roofs`, ...trust.slice(1)]} />

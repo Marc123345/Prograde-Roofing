@@ -127,7 +127,6 @@ function Footer() {
                         <h4>Contact</h4>
                         <ul>
                             <li><a href={telHref}><Icon name="phone" />{site.phone}</a></li>
-                            <li><a href={smsHref}><Icon name="sms" />Text us a photo</a></li>
                             <li><a href={`mailto:${site.email}`}><Icon name="mail" />{site.email}</a></li>
                             <li><a href="/about">About</a></li>
                             <li><a href="/faq">FAQ</a></li>

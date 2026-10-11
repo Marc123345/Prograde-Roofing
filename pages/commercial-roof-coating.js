@@ -10,6 +10,7 @@ export default function Commercial() {
             schema={[serviceSchema("Commercial roof coating", "/commercial-roof-coating"), breadcrumbSchema([{ name: "Commercial Roof Coating", path: "/commercial-roof-coating" }])]}
         >
             <PageHero
+                photo
                 crumbs={[{ label: "Commercial Roof Coating" }]}
                 eyebrow="Small commercial"
                 title="Commercial Roof Coating for Small Businesses"

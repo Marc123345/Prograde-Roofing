@@ -26,6 +26,7 @@ export default function Flat() {
             schema={[serviceSchema("Flat and rubber roof coating", "/flat-roof-coating"), faqSchema(qs), breadcrumbSchema([{ name: "Flat & Rubber Roof Coating", path: "/flat-roof-coating" }])]}
         >
             <PageHero
+                photo
                 crumbs={[{ label: "Flat & Rubber Roof Coating" }]}
                 eyebrow="Rubber, flat and low-slope roofs"
                 title="Rubber and Flat Roof Coating"

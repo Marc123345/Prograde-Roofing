@@ -17,6 +17,7 @@ export default function Residential() {
             schema={[serviceSchema("Residential roof coating", "/residential-roof-coating"), breadcrumbSchema([{ name: "Residential Roof Coating", path: "/residential-roof-coating" }])]}
         >
             <PageHero
+                photo
                 crumbs={[{ label: "Residential Roof Coating" }]}
                 eyebrow="Homes and garages"
                 title="Roof Coating for Homes, Garages and Outbuildings"

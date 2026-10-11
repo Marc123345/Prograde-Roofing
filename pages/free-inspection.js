@@ -2,7 +2,7 @@ import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
 import { Checks, breadcrumbSchema } from "@/components/Blocks"
-import { site, telHref, smsHref } from "@/data/site"
+import { site, telHref } from "@/data/site"
 
 export default function FreeInspection() {
     return (
@@ -34,7 +34,6 @@ export default function FreeInspection() {
                         </p>
                         <div className="pg-hero-ctas" style={{ marginTop: 20 }}>
                             <a className="sr-btn sr-btn--dark" href={telHref}><Icon name="phone" />Call</a>
-                            <a className="sr-btn sr-btn--outline" href={smsHref}><Icon name="sms" />Text a photo</a>
                             <a className="sr-btn sr-btn--outline" href={`mailto:${site.email}`}><Icon name="mail" />Email</a>
                         </div>
 

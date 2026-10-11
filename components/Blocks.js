@@ -51,7 +51,7 @@ export function HeroBg({ img }) {
     )
 }
 
-export function CallButtons({ inspect = "Book a Free Inspection", text = "Text Us a Photo", call = true, dark }) {
+export function CallButtons({ inspect = "Book a Free Inspection", text = false, call = true, dark }) {
     return (
         <div className="pg-hero-ctas">
             <a className={`sr-btn ${dark ? "sr-btn--dark" : "sr-btn--accent"} sr-btn--lg`} href="/free-inspection">{inspect}</a>
@@ -71,9 +71,13 @@ export function TrustBar({ items = trust }) {
     )
 }
 
-export function PageHero({ crumbs, eyebrow, title, lead, img, children }) {
+// photo: the page's photo fills the whole hero behind the text (service pages), matching the
+// home and barn landing heroes. Without it the photo sits in a card beside the text.
+export function PageHero({ crumbs, eyebrow, title, lead, img, photo, children }) {
+    const full = photo && img
     return (
-        <section className={`pg-page-hero${img ? "" : " pg-page-hero--text"}`}>
+        <section className={`pg-page-hero${full ? " pg-page-hero--photo" : img ? "" : " pg-page-hero--text"}`}>
+            {full && <div className="pg-page-hero__bg"><HeroBg img={img} /></div>}
             <div className="sr-container">
                 {crumbs && (
                     <nav aria-label="Breadcrumb">
@@ -90,7 +94,7 @@ export function PageHero({ crumbs, eyebrow, title, lead, img, children }) {
                         {lead && <p className="sr-lead">{lead}</p>}
                         <div style={{ marginTop: 28 }}>{children}</div>
                     </div>
-                    {img && <div className="pg-page-hero__media reveal"><Img img={img} priority /></div>}
+                    {img && !full && <div className="pg-page-hero__media reveal"><Img img={img} priority /></div>}
                 </div>
             </div>
         </section>
@@ -307,7 +311,6 @@ export function FinalCta({ title = "Get your roof looked at for free", id = "qf-
                     <div style={{ marginTop: 28 }}>
                         <div className="pg-hero-ctas">
                             <a className="sr-btn sr-btn--dark sr-btn--lg" href={telHref}><Icon name="phone" />Call {site.phone}</a>
-                            <a className="sr-btn sr-btn--outline sr-btn--lg" href={smsHref}><Icon name="sms" />Text Us a Photo</a>
                         </div>
                     </div>
                     <p className="sr-muted" style={{ marginTop: 24, fontSize: ".9rem" }}>{site.hic} · Fully insured · Serving {site.regionShort}</p>
