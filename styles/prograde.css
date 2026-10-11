@@ -392,3 +392,16 @@ html, body { overflow-x: clip; max-width: 100%; }
     clip-path: none !important; transition: none !important; animation: none !important;
   }
 }
+
+/* Consent to contact (TCPA) + privacy notice under every inspection form. */
+.pg-consent { border: 0; padding: 0; margin: 20px 0 0; }
+.pg-consent legend { font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+.pg-consent legend span { color: #b42318; margin-left: 2px; }
+.pg-consent__box { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; cursor: pointer; font-size: 0.8rem; line-height: 1.5; color: var(--text); }
+.pg-consent__box input { width: 20px; height: 20px; margin: 1px 0 0; accent-color: var(--ink); }
+.pg-consent__privacy { margin-top: 10px; font-size: 0.74rem; line-height: 1.5; color: var(--text-muted); }
+.pg-consent__privacy a { color: inherit; text-decoration: underline; }
+/* Spam honeypot (Jotform's "website" field): hidden from people. */
+.pg-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.sr-form-card { position: relative; }
+.pg-sink { position: absolute; width: 0; height: 0; border: 0; visibility: hidden; }

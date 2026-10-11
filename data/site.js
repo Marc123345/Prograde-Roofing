@@ -30,12 +30,15 @@ export const site = {
     // Canonical address used by canonical tags, schema, the sitemap and
     // robots.txt. Live Vercel address until William's own domain is connected;
     // then set NEXT_PUBLIC_SITE_URL in Vercel (no trailing slash) and redeploy.
-    url: (process.env.NEXT_PUBLIC_SITE_URL || "https://prograde-roofing.vercel.app").replace(/\/$/, ""),
+    url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.prograderoofcoating.com").replace(/\/$/, ""),
     // Google Search Console "HTML tag" verification code (content="..." only).
     gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
     // Lead form endpoint (Formspree, Jotform, etc). Until it is set, the form
     // does NOT pretend to send: it tells the visitor to call or text instead.
     leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "",
+    // Jotform "ProGrade Roof Coatings – Free Roof Inspection" (Marc's account).
+    // The site's form posts straight into it; Jotform redirects to /thank-you.
+    jotformId: "262833320426048",
 }
 
 // SMS with the prefilled message from the plan (section 3, sticky mobile bar).
@@ -326,3 +329,11 @@ export const privacyNotice =
 
 // Home card for flat roofs uses the public-domain stock photo (no credit needed).
 services.find((x) => x.href === "/flat-roof-coating").img = stock.epdmFinished
+
+// Consent + privacy wording shown under every inspection form (and on the
+// Jotform). Adapted from True Bilt's form with ProGrade's name and fields.
+// ⚠ William to confirm the 24-month retention period.
+export const consentText =
+    "By checking this box and submitting this form, I give ProGrade Roof Coatings permission to contact me by phone call, text message and email at the number and address I provided, including with messages sent by automated dialing or texting systems. Consent is not a condition of purchase or of receiving an inspection. Message and data rates may apply. Message frequency varies. Reply STOP to opt out of texts or HELP for help."
+export const formPrivacyText =
+    "We collect the name, phone number, email address, property ZIP code and building details you enter here, plus any photo or job details you choose to send. We use it for one purpose: to contact you about your estimate and carry out the work if you hire us. We do not sell or share your personal information, and we do not use it for targeted advertising. We keep enquiry records for up to 24 months. If you are a California resident you may request access to, correction of, or deletion of your information by calling or emailing us."
