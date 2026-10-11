@@ -128,6 +128,15 @@ export const jobs = {
     rustedPanels: { ...jp("rusted-panels"), alt: "Close-up of rusted metal roof panels before prep" },
 }
 
+// One photo per state for the service-area tiles and state page heroes. Only the PA one is a
+// job in that state (Hookstown, Beaver County); the others are background only, never captioned.
+export const areaPhotos = {
+    pennsylvania: jobs.firehallCoating,
+    ohio: jobs.grayBarn.after,
+    "west-virginia": jobs.smallBarn.after,
+    virginia: jobs.quonset.after,
+}
+
 // ⚠ STOCK, not William's work. He has no flat or rubber roof photos yet
 // (none on his Facebook as of 8 Oct 2026). Marc approved stock for the flat
 // roof page until he sends his own. Wikimedia Commons; CC BY-SA images MUST
@@ -248,9 +257,9 @@ export const states = [
         card: "Western Pennsylvania",
         cardText: "Our home base. Farm, commercial and residential roofs across Western PA.",
         h1: "Roof Coating in Western Pennsylvania",
-        sub: "Barn, metal and commercial roof coating across Western PA from a locally owned, PA-registered contractor.",
+        sub: "Barn, metal and commercial roofs across Western PA. Locally owned and PA-registered.",
         angleTitle: "Built for Western PA weather",
-        angle: `Freeze and thaw cycles, heavy snow and wet springs are hard on metal roofs. Water sits at the laps and screws, and that's where rust starts. A sealed and coated roof keeps that water out. We're registered with the Pennsylvania Attorney General (${site.hic}) and carry insurance on every job.`,
+        angle: `Freeze-thaw, heavy snow and wet springs push water into laps and screws, where rust starts. A sealed, coated roof keeps it out. PA-registered (${site.hic}) and insured on every job.`,
         title: "Roof Coating in Western PA | Barns & Metal | ProGrade",
         description: `Barn and metal roof coating across Western Pennsylvania. Registered PA contractor, insured, 10 years in business. Free inspection: ${site.phone}.`,
         proof: "firehall",
@@ -261,9 +270,9 @@ export const states = [
         card: "Eastern Ohio",
         cardText: "Barns and metal roofs across the state line in eastern Ohio.",
         h1: "Barn and Metal Roof Coating in Eastern Ohio",
-        sub: "We cross the state line for farm, commercial and residential coating jobs in eastern Ohio.",
+        sub: "Farm, commercial and residential roof coating across the line in eastern Ohio.",
         angleTitle: "Farm country on both sides of the line",
-        angle: "Eastern Ohio has the same old bank barns, pole buildings and steel roofs we coat every week in Pennsylvania. Same process, same prep, same written guarantee.",
+        angle: "The same bank barns, pole buildings and steel roofs we coat every week in Pennsylvania. Same prep, same written guarantee.",
         title: "Barn & Metal Roof Coating in Eastern Ohio | ProGrade",
         description: `Roof coating for barns, pole buildings and metal roofs in eastern Ohio. Insured, 10 years in business. Free in-person inspections. Call ${site.phone}.`,
     },
@@ -275,7 +284,7 @@ export const states = [
         h1: "Roof Coating in Northern West Virginia",
         sub: "Barn and metal roof coating in the northern panhandle and north-central West Virginia.",
         angleTitle: "Hill country roofs",
-        angle: "Steep sites, long winters and older farm buildings mean a lot of rusted steel roofs in northern West Virginia. We coat them without tear-off, so the building stays in use.",
+        angle: "Long winters and older farm buildings mean a lot of rusted steel. We coat it without a tear-off, so the building stays in use.",
         title: "Roof Coating in Northern West Virginia | ProGrade",
         description: `Barn and metal roof coating in northern West Virginia. Insured, 10 years in business. Free in-person inspections. Call ${site.phone}.`,
     },
@@ -283,11 +292,11 @@ export const states = [
         slug: "virginia",
         name: "Virginia",
         card: "Virginia",
-        cardText: "Barn and metal roof coating for farms and businesses in Virginia. Call to check your county.",
+        cardText: "Barns and metal roofs for farms and businesses. Call to check your county.",
         h1: "Roof Coating in Virginia",
         sub: "Barn and metal roof coating for farms and businesses in Virginia.",
         angleTitle: "Call to check your county",
-        angle: `We take on coating work in Virginia. Before we book an inspection, call or text ${site.phone} with your town and we'll tell you straight whether we can get to you.`,
+        angle: `Call or text ${site.phone} with your town before booking and we'll tell you straight whether we can get to you.`,
         title: "Roof Coating in Virginia | ProGrade Roof Coatings",
         description: `Barn and metal roof coating in Virginia. Insured, 10 years in business. Free in-person inspections. Call ${site.phone}.`,
         // Region and VA licence (DPOR) unconfirmed: kept out of search until then.

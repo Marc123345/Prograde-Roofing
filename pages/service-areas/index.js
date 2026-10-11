@@ -2,14 +2,7 @@ import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import { PageHero, CallButtons, FinalCta, Img, breadcrumbSchema } from "@/components/Blocks"
 import { contractorSchema } from "@/components/Layout"
-import { site, states, jobs, smsHref, telHref } from "@/data/site"
-
-const areaPhotos = {
-    pennsylvania: jobs.firehallCoating,
-    ohio: jobs.grayBarn.after,
-    "west-virginia": jobs.smallBarn.after,
-    virginia: jobs.quonset.after,
-}
+import { site, states, jobs, areaPhotos, telHref } from "@/data/site"
 
 export default function ServiceAreas() {
     return (
@@ -22,7 +15,9 @@ export default function ServiceAreas() {
                 crumbs={[{ label: "Service Areas" }]}
                 eyebrow="Four states"
                 title="Roof Coating Service Area"
-                lead={`Based in ${site.base}. We coat barns, metal roofs and commercial buildings across four states.`}
+                lead={`Based in ${site.base}. Barns, metal and commercial roofs across four states.`}
+                img={jobs.longBarn.after}
+                photo
             >
                 <CallButtons text={false} />
             </PageHero>
@@ -55,7 +50,7 @@ export default function ServiceAreas() {
                         ))}
                     </div>
                     <p className="sr-lead reveal" style={{ textAlign: "center", marginTop: 40, fontSize: "1.1rem" }}>
-                        Don't see your town? <a href={telHref} style={{ fontWeight: 600 }}>Call</a> or <a href={smsHref} style={{ fontWeight: 600 }}>text</a> {site.phone} and ask. If we can get to you, we will.
+                        Don't see your town? Call <a href={telHref} style={{ fontWeight: 600 }}>{site.phone}</a> and ask.
                     </p>
                 </div>
             </section>
