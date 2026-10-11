@@ -434,3 +434,19 @@ html, body { overflow-x: clip; max-width: 100%; }
   .pg-bento__item--lead .pg-bento__body { padding: 24px; }
   .pg-bento__item--lead h3 { font-size: 1.7rem; }
 }
+
+/* Service areas bento: PA lead 2x2, Ohio across the top-right, WV + VA below. */
+.pg-bento__item--wide { grid-column: span 2; }
+a.pg-bento__item { text-decoration: none; }
+.pg-bento__num .pg-icon { width: 20px; height: 20px; }
+.pg-bento__more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; min-height: 44px; color: var(--gold-400); font-weight: 600; font-size: .95rem; }
+.pg-bento__more .pg-icon { transition: transform .3s var(--ease); }
+a.pg-bento__item:hover .pg-bento__more .pg-icon,
+a.pg-bento__item:focus-visible .pg-bento__more .pg-icon { transform: translateX(4px); }
+a.pg-bento__item:focus-visible { outline: 3px solid var(--gold-500); outline-offset: 3px; }
+@media (max-width: 1100px) {
+  .pg-bento--areas .pg-bento__item--wide { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .pg-bento--areas .pg-bento__item--wide { grid-column: auto; }
+}
