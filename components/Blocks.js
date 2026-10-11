@@ -372,3 +372,32 @@ export function Gallery({ eyebrow = "Our work", title, lead, items, soft, cols =
         </section>
     )
 }
+
+// Process as a bento grid: step 1 is a large feature tile, steps 2-5 form a
+// 2x2 block beside it. Each step sits on one of William's job photos.
+export function ProcessBento({ eyebrow = "The process", title, steps }) {
+    return (
+        <section className="sr-section">
+            <div className="sr-container">
+                <SectionHead eyebrow={eyebrow} title={title} />
+                <div className="sr-grid pg-bento">
+                    {steps.map((s, i) => (
+                        <article className={`sr-card pg-bento__item${i === 0 ? " pg-bento__item--lead" : ""}`} key={s.title}>
+                            <div className="pg-bento__media">
+                                <Img
+                                    img={{ ...s.img, alt: "" }}
+                                    sizes={i === 0 ? "(max-width: 600px) calc(100vw - 32px), (max-width: 1100px) 100vw, 620px" : "(max-width: 600px) calc(100vw - 32px), (max-width: 1100px) 50vw, 300px"}
+                                />
+                            </div>
+                            <div className="pg-bento__body">
+                                <span className="pg-bento__num">{String(i + 1).padStart(2, "0")}</span>
+                                <h3>{s.title}</h3>
+                                <p>{s.text}</p>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        </section>
+    )
+}

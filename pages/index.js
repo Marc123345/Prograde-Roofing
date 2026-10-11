@@ -1,7 +1,7 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
 import InspectionForm from "@/components/InspectionForm"
-import { TrustBar, SectionHead, Steps, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, HeroBg, faqSchema } from "@/components/Blocks"
+import { TrustBar, SectionHead, ProcessBento, Values, BeforeAfter, Gallery, Reels, Faq, FinalCta, Img, HeroBg, faqSchema } from "@/components/Blocks"
 import { site, services, jobSteps, whyUs, jobs, reels, faq, states, smsHref, telHref } from "@/data/site"
 
 const homeFaq = [faq.rusty, faq.cost, faq.life, faq.shutdown]
@@ -77,7 +77,16 @@ export default function Home() {
                 </div>
             </section>
 
-            <Steps eyebrow="The process" title="How a ProGrade coating job works" steps={jobSteps} soft={false} />
+            <ProcessBento
+                title="How a ProGrade coating job works"
+                steps={[
+                    { ...jobSteps[0], img: jobs.rustedPanels },
+                    { ...jobSteps[1], img: jobs.steel.before },
+                    { ...jobSteps[2], img: { src: reels.spray.poster } },
+                    { ...jobSteps[3], img: jobs.firehallCoating },
+                    { ...jobSteps[4], img: jobs.longBarn.after },
+                ]}
+            />
 
             {/* Proof: his own jobs */}
             <Gallery soft title="Recent work" lead="Drag the slider on each photo to compare the roof before and after coating." items={[jobs.barn, jobs.longBarn, jobs.quonset, jobs.steel, jobs.smallBarn, jobs.lowBarn]} />
