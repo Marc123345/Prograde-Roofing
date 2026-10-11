@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout"
 import Icon from "@/components/Icon"
-import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, Steps, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
+import { PageHero, CallButtons, TrustBar, Gallery, Split, Checks, Photo, ProcessBento, BeforeAfter, Reels, Faq, FinalCta, SectionHead, faqSchema, serviceSchema, breadcrumbSchema } from "@/components/Blocks"
 import { site, jobs, reels, faq, fitTable } from "@/data/site"
 
 const steps = [
@@ -43,9 +43,19 @@ export default function Metal() {
 
             <Gallery title="Metal roofs we've coated" items={[jobs.quonset, jobs.lowBarn, { img: jobs.rustedPanels, title: "Rusted panels", tag: "Before prep" }]} />
 
-            <Steps eyebrow="Process" title="How we coat a metal roof" steps={steps} soft={false} />
+            <ProcessBento
+                eyebrow="Process"
+                title="How we coat a metal roof"
+                steps={[
+                    { ...steps[0], img: jobs.firehall },
+                    { ...steps[1], img: { src: reels.spray.poster } },
+                    { ...steps[2], img: { src: reels.fasteners.poster } },
+                    { ...steps[3], img: { src: reels.prep.poster } },
+                    { ...steps[4], img: jobs.firehallCoating },
+                ]}
+            />
 
-            <Reels items={[reels.prep, reels.coating, reels.rust]} title="Seams, screws, then coating" />
+            <Reels items={[reels.seams, reels.coating, reels.rust]} title="Seams, screws, then coating" />
 
             <section className="sr-section sr-section--soft">
                 <div className="sr-container" style={{ maxWidth: 980 }}>
