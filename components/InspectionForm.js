@@ -73,7 +73,7 @@ export default function InspectionForm({ id = "qf", short = false, title = "Book
                     <input id={f("name")} name={F.name} autoComplete="name" type="text" required />
                 </div>
                 <div className="sr-field">
-                    <label htmlFor={f("phone")}>Best number to call or text</label>
+                    <label htmlFor={f("phone")}>Phone</label>
                     <input id={f("phone")} name={F.phone} autoComplete="tel" type="tel" inputMode="tel" required />
                 </div>
             </div>
