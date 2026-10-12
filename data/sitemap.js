@@ -1,7 +1,8 @@
-// Every public, indexable page: the single list behind /sitemap.xml and the
+// Every public, indexable page: the single list behind public/sitemap.xml
+// (written by scripts/build-sitemap.mjs) and the
 // human /sitemap page. Left out on purpose (plan, section 5): the Facebook ad
 // page /barn-roof-coating, /thank-you, and noindex state pages (Virginia).
-import { states, jobs, stock } from "./site"
+import { states, jobs, stock } from "./site.js"
 
 // Bump when page content changes meaningfully; Google uses it as a recrawl hint.
 export const UPDATED = "2026-10-12"
