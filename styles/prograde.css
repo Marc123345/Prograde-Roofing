@@ -524,3 +524,9 @@ a.pg-bento__item:focus-visible { outline: 3px solid var(--gold-500); outline-off
 /* Licence credit for a stock photo inside a bento tile */
 .pg-bento__credit { position: absolute; top: 10px; right: 10px; z-index: 2; padding: 3px 8px; border-radius: 999px; background: rgba(10,10,10,.6); color: rgba(255,255,255,.85); font-size: .7rem; line-height: 1.4; text-decoration: none; }
 .pg-bento__credit:hover { color: #fff; text-decoration: underline; }
+
+/* Mobile/tablet nav stays solid white when scrolled (the frosted 82% see-through
+   header from premium.css read as "going transparent" on phones). Desktop keeps it. */
+@media (max-width: 1024px) {
+  .sr-nav.is-stuck { background: var(--surface); -webkit-backdrop-filter: none; backdrop-filter: none; }
+}
