@@ -4,7 +4,7 @@
 import { states, jobs, stock } from "./site"
 
 // Bump when page content changes meaningfully; Google uses it as a recrawl hint.
-export const UPDATED = "2026-10-08"
+export const UPDATED = "2026-10-12"
 
 const img = (i, title) => ({ src: i.src, title: title || i.alt })
 
