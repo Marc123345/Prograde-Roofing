@@ -13,7 +13,7 @@
    screen readers read it cleanly. No layout shift (words wrap in place). */
 (function () {
   "use strict";
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches) return;
 
   function split(el) {
     if (el.dataset.split || el.children.length) return; /* skip done / rich-markup headings */
@@ -60,7 +60,7 @@
 (function () {
   "use strict";
   document.documentElement.classList.add("reveal-js");
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches;
 
   /* 1) Opt more elements into the system (cards, media, section heads). */
   var enrich = [
@@ -237,7 +237,7 @@
 /* SummitRoof motion — count-up stats (rAF, reduced-motion aware, static fallback). */
 (function () {
   "use strict";
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches;
   var counters = document.querySelectorAll("[data-count]");
   if (!counters.length || !("IntersectionObserver" in window)) return;
   var io = new IntersectionObserver(function (entries) {
@@ -312,7 +312,7 @@
    progress (transform-only bar) and corrects anchor landing under the nav. */
 (function () {
   "use strict";
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches;
 
   /* Progress hairline — passive scroll, rAF-throttled, scaleX only. */
   var bar = document.querySelector(".sr-progress");
@@ -360,7 +360,7 @@
   var triggers = [].slice.call(document.querySelectorAll("[data-lb]"));
   if (!triggers.length) return;
 
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches;
   var lastFocus = null;
   var group = [];      // triggers in the currently open group
   var index = 0;
@@ -484,7 +484,7 @@
 /* SummitRoof motion — back-to-top, cookie bar, quote/lead forms. */
 (function () {
   "use strict";
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce), (max-width: 767px)").matches;
   var top = document.querySelector(".sr-top");
   if (top) {
     window.addEventListener("scroll", function () {

@@ -60,8 +60,10 @@
   :root{--reveal-y:var(--reveal-y-sm)}
 }
 
-/* ---- Global reduced-motion guard (motion layer owns this) ---- */
-@media(prefers-reduced-motion:reduce){
+/* ---- Global reduced-motion guard (motion layer owns this) ----
+   Phones (<768px) get it too: no animations on mobile (Marc, 12 Oct 2026).
+   motion.js uses the same media query. */
+@media(prefers-reduced-motion:reduce),(max-width:767px){
   *,*::before,*::after{
     animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important;

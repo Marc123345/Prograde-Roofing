@@ -244,7 +244,7 @@ html.no-loader .sr-loader{display:none!important}
 /* ---------------------------------------------------------------
    12) REDUCED MOTION — neutralize everything premium adds.
 --------------------------------------------------------------- */
-@media(prefers-reduced-motion:reduce){
+@media(prefers-reduced-motion:reduce),(max-width:767px){
   .sr-loader__mark path,.sr-loader__mark rect{animation:none;stroke-dashoffset:0;fill:var(--cta)}
   .sr-loader__word{animation:none;opacity:1;transform:none}
   .sr-hero--full .sr-hero__bg img,.sr-hero__bg[data-parallax] img{animation:none!important;transform:none!important}
@@ -290,7 +290,7 @@ html.no-loader .sr-loader{display:none!important}
 .sr-lb-btn:hover{background:var(--cta)}
 @media(hover:none){.sr-lb-btn{opacity:1;transform:none}}
 
-@media(prefers-reduced-motion:reduce){
+@media(prefers-reduced-motion:reduce),(max-width:767px){
   .sr-lb__img.is-in{animation:none}
   .sr-lb-btn{transition:none}
 }
