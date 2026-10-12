@@ -32,7 +32,7 @@ export const site = {
     // then set NEXT_PUBLIC_SITE_URL in Vercel (no trailing slash) and redeploy.
     url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.prograderoofcoating.com").replace(/\/$/, ""),
     // Google Search Console "HTML tag" verification code (content="..." only).
-    gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+    gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "e9wnhDcnJaeBvH4x1-7Ww91NGRbzlJnSRRpp56czYSY",
     // Lead form endpoint (Formspree, Jotform, etc). Until it is set, the form
     // does NOT pretend to send: it tells the visitor to call or text instead.
     leadEndpoint: process.env.NEXT_PUBLIC_LEAD_ENDPOINT || "",
